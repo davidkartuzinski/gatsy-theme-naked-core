@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Layout from '../components/structure/layout';
 import Aside from '../components/structure/aside';
+import Seo from '../components/core/Seo';
 
 const CategoriesPage = () => {
   return (
@@ -23,6 +24,6 @@ const CategoriesPage = () => {
   );
 };
 
-export const Head = () => <title>Tags Page</title>;
+export const Head = () => <Seo title='Categories Page' slug='categories' />;
 
 export default CategoriesPage;

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Layout from '../components/structure/layout';
 import Aside from '../components/structure/aside';
+import Seo from '../components/core/Seo';
 
 const Tutorials = () => {
   return (
@@ -25,6 +26,6 @@ const Tutorials = () => {
   );
 };
 
-export const Head = () => <title>Tutorials Page</title>;
+export const Head = () => <Seo title='Tutorials Page' slug='tutorials' />;
 
 export default Tutorials;

@@ -17,8 +17,8 @@ const Footer = () => {
 
       <section className='privacy'>
         <small>
-          &copy;2020 | The Gatsby Theme Naked Logo and name. The theme and
-          content of this demo are MIT licensed.
+          &copy;2020 - 2022 &nbsp;| &nbsp;The Gatsby Theme Naked Logo and name.
+          The theme and content of this demo are MIT licensed.
         </small>
       </section>
     </footer>

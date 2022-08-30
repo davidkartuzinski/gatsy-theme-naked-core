@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Layout from '../components/structure/layout';
 import Aside from '../components/structure/aside';
+import Seo from '../components/core/Seo';
 
 const Contact = () => {
   return (
@@ -18,6 +19,6 @@ const Contact = () => {
   );
 };
 
-export const Head = () => <title>Contact Page</title>;
+export const Head = () => <Seo title='Contact Page' slug='contact' />;
 
 export default Contact;

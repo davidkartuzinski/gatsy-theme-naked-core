@@ -3,6 +3,7 @@ import Layout from '../components/structure/layout';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import Aside from '../components/structure/aside';
+import Seo from '../components/core/Seo';
 
 const IndexPage = () => {
   const data = useStaticQuery(query);
@@ -104,7 +105,7 @@ const IndexPage = () => {
   );
 };
 
-export const Head = () => <title>Home Page</title>;
+export const Head = () => <Seo title='Home Page' slug='' />;
 
 export const query = graphql`
   query idea {

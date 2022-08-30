@@ -3,6 +3,7 @@ import Layout from '../components/structure/layout';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import Aside from '../components/structure/aside';
+import Seo from '../components/core/Seo';
 
 const NotFoundPage = () => {
   const data = useStaticQuery(query);
@@ -32,7 +33,7 @@ const NotFoundPage = () => {
   );
 };
 
-export const Head = () => <title>Page Not Found - 404 </title>;
+export const Head = () => <Seo title='Page Not Found - 404' slug='404' />;
 
 export const query = graphql`
   query image404 {
