@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Layout from '../components/structure/layout';
+import Aside from '../components/structure/aside';
 
 const Tutorials = () => {
   return (
@@ -19,6 +20,7 @@ const Tutorials = () => {
           </p>
         </article>
       </main>
+      <Aside />
     </Layout>
   );
 };

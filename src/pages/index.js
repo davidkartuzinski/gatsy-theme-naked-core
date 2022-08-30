@@ -1,8 +1,12 @@
 import * as React from 'react';
 import Layout from '../components/structure/layout';
-import { Link } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import { graphql, useStaticQuery, Link } from 'gatsby';
+import Aside from '../components/structure/aside';
 
 const IndexPage = () => {
+  const data = useStaticQuery(query);
+
   return (
     <Layout pageClass={`home-page`}>
       <main className='page'>
@@ -17,7 +21,12 @@ const IndexPage = () => {
               </p>
             </div>
             <div>
-              <p>image goes here</p>
+              <p>
+                <GatsbyImage
+                  image={data.idea.childImageSharp.gatsbyImageData}
+                  alt='Naked Theme is a great idea'
+                />
+              </p>
             </div>
           </header>
           <section className='column-1'>
@@ -90,10 +99,21 @@ const IndexPage = () => {
           </section>
         </article>
       </main>
+      <Aside />
     </Layout>
   );
 };
 
 export const Head = () => <title>Home Page</title>;
+
+export const query = graphql`
+  query idea {
+    idea: file(relativePath: { eq: "idea.png" }) {
+      childImageSharp {
+        gatsbyImageData(formats: AUTO, placeholder: BLURRED)
+      }
+    }
+  }
+`;
 
 export default IndexPage;

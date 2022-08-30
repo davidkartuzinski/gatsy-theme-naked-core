@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Layout from '../components/structure/layout';
+import Aside from '../components/structure/aside';
 
 const Contact = () => {
   return (
@@ -12,6 +13,7 @@ const Contact = () => {
           <p>Please feel free to contact us.</p>
         </article>
       </main>
+      <Aside />
     </Layout>
   );
 };

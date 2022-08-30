@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Layout from '../components/structure/layout';
+import Aside from '../components/structure/aside';
 
 const CategoriesPage = () => {
   return (
@@ -17,6 +18,7 @@ const CategoriesPage = () => {
           </ul>
         </article>
       </main>
+      <Aside />
     </Layout>
   );
 };
