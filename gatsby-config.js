@@ -91,5 +91,19 @@ module.exports = {
       },
       __key: 'pages',
     },
+    // https://manifest-validator.appspot.com/
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `GatsbyThemeNaked`,
+        short_name: `NakedTheme`,
+        start_url: `/`,
+        background_color: `#FFF7F0`,
+        theme_color: `#F3824A`,
+        display: `standalone`,
+        icon: `src/images/icon.png`,
+      },
+    },
+    `gatsby-plugin-offline`,
   ],
 };
