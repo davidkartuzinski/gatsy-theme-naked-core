@@ -3,8 +3,8 @@ import Layout from '../components/structure/layout';
 
 const Contact = () => {
   return (
-    <Layout>
-      <main>
+    <Layout pageClass={`contact-page`}>
+      <main className='page'>
         <article>
           <header>
             <h1>Contact Us</h1>

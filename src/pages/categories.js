@@ -3,8 +3,8 @@ import Layout from '../components/structure/layout';
 
 const CategoriesPage = () => {
   return (
-    <Layout>
-      <main>
+    <Layout pageClass={`categories-page`}>
+      <main className='page'>
         <article>
           <header>
             <h1>Categories</h1>

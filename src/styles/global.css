@@ -1,0 +1,1864 @@
+/****
+**
+** There are two sections of this global.css style sheet.  1. Are global styles and 2. Optional or    ** Plugin specific styles 
+** that you can delete to replace with, for example with styled-components or emotion. 
+**
+** In fact, all these styles could be deleted, but things like Fonts and other global styles will need ** to be addressed. 
+****/
+
+/****
+**  
+** Global styles
+** 
+****/
+
+/**** CSS Custom Variable for Color Scheme ****/
+
+:root {
+  --accent-color: #d77e00;
+  --accent-color-shade: #8e4200;
+  --dark-accent-color: #55433b;
+  --grey-color: #dfe0df;
+  --white-color: #fff7f0;
+  --black-color: #040404;
+  --success-green: #007c45;
+  --error-red: #c4515c;
+  --edges-width: calc((100% - 1280px) / 2);
+}
+
+/**** Accessible .visually-hidden class 
+**
+** WARNING: If you delete these, your website will self-destruct.
+**
+****/
+
+/* https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html */
+/* ie9+ */
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/****
+**  END OF ACCESSIBILITY FOCUSED STYLES
+****/
+
+/****
+**  
+** FONT STYLES - DELETE THESE IF YOU USE TYPOGRAPHY.JS
+** 
+****/
+
+.h3 {
+  margin: 0 5% 1.5rem;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  color: #55433b;
+  font-family: 'Patua One', sans-serif;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  font-size: 1.31951rem;
+  line-height: 1.1;
+}
+
+.h4 {
+  margin: 0 5% 1.5rem;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  color: #55433b;
+  font-family: 'Patua One', sans-serif;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  font-size: 1rem;
+  line-height: 1.1;
+}
+
+/****
+**  END OF FONT STYLES
+****/
+
+/****
+**  
+** Optional or Plugin specific styles
+** 
+****/
+
+/** BASIC STRUCTURE STYLES THAT CAN BE DELETED, REPLACED OR USED IN OTHER PLACES **/
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+article h1 {
+  text-align: left;
+}
+
+aside h2,
+aside h3 {
+  text-align: center;
+}
+
+img {
+  border-radius: 5px;
+}
+
+blockquote {
+  background: var(--white-color);
+  border-left: 10px solid var(--grey-color);
+  margin: 1.5em 0px;
+  padding: 1rem 10px;
+  quotes: '\201C''\201D''\2018''\2019';
+}
+blockquote:before {
+  color: var(--accent-color);
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+
+dl {
+  margin: 0 1rem;
+}
+
+hr {
+  background-color: var(--accent-color);
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+button {
+  margin-top: 1.5rem;
+  display: block;
+  text-align: center;
+  padding: 12px 20px 12px 20px;
+  border-radius: 3px;
+  background-color: var(--accent-color);
+  color: var(--black-color);
+  border: none;
+  width: calc(100% - 10px);
+}
+
+button:hover {
+  background-color: var(--grey-color);
+  color: var(--black-color);
+}
+
+button:active {
+  background-color: var(--dark-accent-color);
+  color: var(--white-color);
+}
+
+button:focus {
+  outline: 3px dotted var(--accent-color-shade);
+  outline-offset: 2px;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form svg {
+  vertical-align: middle;
+  margin-left: -1.2rem;
+}
+
+.success-message,
+.error-message {
+  display: block;
+  min-height: 3rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.success-message {
+  border: solid 2px var(--success-green);
+  color: var(--success-green);
+}
+
+.error-message {
+  border: solid 2px var(--error-red);
+  color: var(--error-red);
+}
+
+input {
+  display: block;
+  text-align: left;
+  padding: 12px 20px 12px 20px;
+  border-radius: 3px;
+  border-color: var(--black-color);
+  margin-bottom: 1.5rem;
+  width: 100%;
+  font-size: 115%;
+  letter-spacing: 2px;
+}
+
+textarea {
+  width: 100%;
+  display: block;
+  text-align: left;
+  padding: 12px 20px 12px 20px;
+  border-radius: 3px;
+  border-color: var(--black-color);
+}
+
+input:focus,
+textarea:focus {
+  outline: 3px solid var(--accent-color-shade);
+  border-color: transparent;
+}
+
+small {
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+table {
+  margin: 0;
+}
+
+article ul {
+  margin-left: 0.9rem;
+}
+
+article ol {
+  margin-left: 0.8rem;
+}
+
+.page > article,
+.post > article {
+  padding: 0 1.5rem;
+}
+
+.page ul {
+  padding: 0;
+  margin: 0;
+}
+
+.page li {
+  list-style-type: none;
+}
+
+.page section div {
+  text-align: center;
+}
+
+.column-1 {
+  background-color: var(--grey-color);
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+}
+
+.column-1 h2 {
+  text-align: center;
+}
+.column-1 div ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.columns-3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+.columns-3 div {
+  margin-bottom: 1.5rem;
+}
+
+.columns-3 h2 {
+  text-align: center;
+}
+
+@media (min-width: 568px) {
+  .home-page article header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--white-color);
+  }
+  .page > article header > div {
+    width: 50%;
+    padding: 1rem;
+    align-self: center;
+  }
+
+  .page > article {
+    min-height: 60vh;
+  }
+}
+
+@media (min-width: 640px) {
+  .page > article,
+  .post > article {
+    padding: 0 8%;
+  }
+
+  .home-page main > article {
+    padding: 0;
+  }
+  .home-page main > article header {
+    padding: 0 5%;
+  }
+  .column-1,
+  .columns-3 {
+    padding: 1.5rem 8%;
+  }
+
+  .blogpage main > article,
+  .post > article {
+    padding: 1.5rem 8%;
+  }
+}
+
+@media (min-width: 732px) {
+  button {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .columns-3 {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .page > article,
+  .post > article {
+    padding: 0 4%;
+  }
+}
+
+@media (min-width: 850px) {
+  .page > article,
+  .post > article {
+    padding: 0 8%;
+  }
+  .home-page main > article {
+    padding: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page > article,
+  .post > article {
+    padding: 0 5%;
+  }
+  .home-page main > article {
+    padding: 0;
+  }
+
+  .home-page main > article header {
+    padding: 1.5rem 3%;
+  }
+  .column-1,
+  .columns-3 {
+    padding: 1.5rem 5%;
+  }
+
+  .columns-3 {
+    justify-content: space-between;
+  }
+
+  .columns-3 div {
+    width: 33%;
+    padding: 0rem 1rem;
+  }
+}
+
+/**** START HOME PAGE pages/index.js SPECIFIC STYLES ****/
+
+.home-page main article header div {
+  background-color: var(--white-color);
+  text-align: center;
+}
+
+/**** END HOME PAGE pages/index.js SPECIFIC STYLES ****/
+
+/**** START CONTACT FORM src/component/optional/contact-form.js SPECIFIC STYLES ****/
+
+.contact-page .contact-form {
+  padding: 0;
+  margin: 0;
+}
+
+.contact-page input,
+.contact-page textarea {
+  width: calc(100% - 10px);
+}
+
+@media (min-width: 640px) {
+  .contact-page main > article {
+    padding: 0 8%;
+  }
+  .contact-page main > article header {
+    padding: 0 5%;
+  }
+}
+
+@media (min-width: 732px) {
+  .contact-page input,
+  .contact-page textarea {
+    width: 100%;
+  }
+}
+
+/**** END CONTACT FORM src/component/optional/contact-form.js SPECIFIC STYLES ****/
+
+/**** 
+** 
+** BEGINNING OF BREADCRUMBS STYLING 
+**
+****/
+
+.breadcrumb {
+  height: 4rem;
+}
+.breadcrumbs__container {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 0 1.5rem;
+}
+
+.breadcrumb__title {
+  margin-bottom: 0;
+}
+
+.breadcrumb__list {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.breadcrumb__list__item {
+  list-style: none;
+  text-transform: capitalize;
+}
+
+.breadcrumb__separator {
+  padding: 0 0.5rem;
+}
+
+.breadcrumb__list__item a {
+  text-decoration: none;
+}
+
+.breadcrumb__link__active {
+  font-weight: 900;
+  font-size: 105%;
+}
+
+@media (min-width: 640px) {
+  .breadcrumbs__container {
+    padding: 1.5rem 8%;
+  }
+}
+
+@media (min-width: 768px) {
+  .breadcrumbs__container {
+    padding: 1.5rem 4%;
+  }
+}
+
+@media (min-width: 850px) {
+  .breadcrumbs__container {
+    padding: 1.5rem 8%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .breadcrumbs__container {
+    padding: 1.5rem 5%;
+  }
+}
+
+/****
+**  END OF BREADCRUMBS STYLING
+****/
+
+/****
+**
+** Header Styles 
+**
+****/
+
+.page-header {
+  background-color: var(--white-color);
+  opacity: 0.95;
+  position: fixed;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  padding: 0.7rem 1.3rem;
+  grid-area: header;
+}
+
+.page-header img {
+  border: none;
+}
+
+@media (min-width: 640px) {
+  .page-header {
+    padding: 1rem 8%;
+  }
+}
+
+@media (min-width: 768px) {
+  .page-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    grid-area: header;
+  }
+}
+
+@media (min-width: 850px) {
+  .page-header {
+    padding: 1rem 8%;
+  }
+
+  .menu li:last-of-type {
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-header {
+    padding: 1.5rem 2.5%;
+  }
+}
+
+/****
+**  END OF HEADER STYLES
+****/
+
+/****
+**
+** TOP .logo STYLES 
+**
+****/
+
+.logo {
+  flex-basis: auto;
+  margin: 0;
+  height: 60px;
+  width: 144px;
+}
+
+@media (min-width: 768px) {
+  .logo {
+    height: 75px;
+    width: 180px;
+    align-self: flex-start;
+  }
+}
+
+/****
+**  END OF TOP .logo STYLES
+****/
+
+/****
+**
+** TOP .main-menu STYLES 
+**
+****/
+
+.main-menu {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  z-index: 999;
+  justify-content: space-around;
+}
+
+.main-menu nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100vw;
+  background-color: var(--white-color);
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
+  border-bottom: 1px solid var(--accent-color);
+}
+
+.menu {
+  padding: 0 1.5rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
+  height: 100vh;
+}
+
+.menu li {
+  list-style-type: none;
+  padding: 0.5rem 0;
+}
+
+.menu li a {
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+  font-size: 1.4rem;
+}
+
+.nav-toggle {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+.nav-toggle:checked ~ nav {
+  transform: scale(1, 1);
+}
+
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 0250ms ease-in-out 250ms;
+}
+
+.nav-toggle-label {
+  position: absolute;
+  right: 6%;
+  top: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .nav-toggle-label {
+    right: 8%;
+    top: 1.5rem;
+  }
+
+  .menu {
+    padding: 0 8%;
+  }
+}
+@media (min-width: 768px) {
+  .main-menu {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .main-menu nav {
+    position: static;
+    width: 45vw;
+    background-color: var(--white-color);
+    transition: transform 400ms ease-in-out;
+    transform: scale(1, 1);
+    transform-origin: top;
+    border-bottom: none;
+  }
+
+  .menu {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    text-transform: capitalize;
+    height: auto;
+    justify-content: flex-end;
+  }
+
+  .nav-toggle-label {
+    display: none;
+  }
+
+  .menu li,
+  .menu li {
+    padding: 0 10px;
+    list-style-type: none;
+  }
+
+  .menu li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    opacity: 1;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    color: var(--black-color);
+    font-weight: 900;
+  }
+
+  .menu li a:active {
+    text-decoration: underline;
+    color: var(--accent-color-shade);
+    font-weight: 900;
+  }
+}
+
+@media (min-width: 1024px) {
+  .menu {
+    justify-content: center;
+    margin: 0 0.5rem;
+  }
+  .menu li a {
+    font-size: 1.2rem;
+  }
+}
+
+/****
+**  END OF .main-menu STYLES
+****/
+
+/****
+**
+** TOP .search STYLES 
+**
+****/
+.search {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .search {
+    display: flex;
+    flex-direction: column;
+  }
+  .search-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: bottom;
+  }
+
+  .search-box label {
+    display: flex;
+  }
+
+  .search ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search .search-box {
+    align-content: flex-end;
+  }
+
+  .search input {
+    margin: 0;
+    width: 75%;
+  }
+  .search-results {
+    position: absolute;
+    top: 84%;
+    transition: transform 400ms ease-in-out;
+    transform: scale(1, 1);
+    transform-origin: top;
+    border-bottom: none;
+  }
+  .search-results ul {
+    padding: 1rem;
+    margin: 0;
+  }
+  .search-results li {
+    list-style-type: none;
+    background-color: var(--white-color);
+    padding: 1rem;
+    margin: 0;
+    border-bottom: 1px solid var(--grey-color);
+  }
+}
+/****
+**  END OF TOP .search STYLES
+****/
+
+/****
+**
+** tags and categories on pages/posts STYLES
+**
+****/
+
+.categories-on-page,
+.tags-on-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0rem 1.5rem 2rem;
+}
+
+.categories-on-page .categories-icon,
+.tags-on-page .tags-icon {
+  vertical-align: top;
+  margin-left: -0.15rem;
+  margin-right: 0.1rem;
+}
+
+.categories-on-page svg,
+.tags-on-page svg {
+  vertical-align: middle;
+  margin-left: -0.3rem;
+  margin-right: 0.25rem;
+}
+
+.categories-on-page h3,
+.tags-on-page h3 {
+  text-align: left;
+  padding-left: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.categories-on-page ul,
+.tags-on-page ul {
+  padding: 0;
+  margin: 0;
+}
+
+.categories-on-page ul li,
+.tags-on-page ul li {
+  list-style-type: none;
+  border-bottom: 1px solid var(--grey-color);
+  padding: 0.25rem 0 0.75rem 0;
+}
+
+.categories-on-page ul li a,
+.tags-on-page ul li a {
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.categories-on-page .all-categories,
+.tags-on-page .all-tags {
+  margin-left: 1.1rem;
+}
+
+@media (min-width: 640px) {
+  .categories-on-page,
+  .tags-on-page {
+    padding: 0rem 8% 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .categories-on-page {
+    grid-area: cats;
+  }
+  .tags-on-page {
+    grid-area: tags;
+  }
+}
+
+@media (min-width: 850px) {
+  .categories-on-page,
+  .tags-on-page {
+    padding: 0rem 16% 2rem;
+  }
+}
+
+/****
+** END OF tags and categories on pages/posts STYLES
+****/
+
+/****
+**
+** MAIN DIV STYLES NOTE: Look for subsections. These are the styles for the Main div including the ASIDE.
+**
+****/
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  padding: 110px 0 50px;
+  grid-area: content;
+}
+
+figcaption {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+article div {
+  overflow: hidden;
+}
+
+.inner-article {
+  padding-left: 0%;
+  padding-right: 0%;
+}
+
+.page-aside {
+  grid-area: widgets;
+}
+
+aside section {
+  margin-bottom: 1.5rem;
+}
+
+footer {
+  background-color: var(--white-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-footer {
+  grid-area: footer;
+}
+
+.footer-widgets {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+footer .privacy {
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 568px) {
+  .footer-widgets {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .footer-widgets > div {
+    width: 50%;
+  }
+
+  .footer-widgets > div:last-child {
+    width: 100%;
+  }
+}
+
+@media (min-width: 640px) {
+  .footer-widgets > div {
+    padding: 1.5rem 5%;
+  }
+
+  .footer-widgets > div:last-child {
+    padding: 1.5rem 8%;
+  }
+
+  footer .privacy {
+    padding: 1.5rem 8%;
+  }
+}
+
+@media (min-width: 732px) {
+  .footer-widgets > div {
+    padding: 1.5rem 6%;
+  }
+}
+
+@media (min-width: 768px) {
+  main {
+    padding-top: 150px;
+  }
+
+  .page-aside {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'share share'
+      'tags cats'
+      'mailchimp bio'
+      'latestposts instagram';
+  }
+  .footer-widgets {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+  .footer-widgets > div {
+    flex-basis: 50%;
+    padding: 1.5rem 4%;
+  }
+
+  .footer-widgets div:last-child {
+    flex-basis: 100%;
+    padding: 1.5rem 4%;
+  }
+
+  .wrapper {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'header  header'
+      'content content'
+      'widgets widgets'
+      'comments comments'
+      'footer  footer';
+  }
+  .home-page {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'header  header'
+      'content content'
+      'widgets widgets'
+      'comments comments'
+      'footer  footer ';
+  }
+}
+
+@media (min-width: 850px) {
+  .footer-widgets > div {
+    padding: 6% 6%;
+  }
+
+  .footer-widgets > div:last-child {
+    flex-basis: 100%;
+    padding: 1.5rem 0;
+  }
+  .footer-widgets > div:last-child section {
+    padding: 8%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-widgets {
+    padding: 0 3%;
+    justify-content: space-between;
+  }
+
+  .footer-widgets > div:last-child {
+    flex-basis: 30%;
+    padding: 1.5rem 0;
+  }
+  .footer-widgets > div:last-child section {
+    padding: 5%;
+  }
+
+  .footer-widgets > div {
+    flex-basis: 30%;
+    padding: 0;
+  }
+  .wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      'header  header  header'
+      'content content aside'
+      'widgets widgets  widgets'
+      'comments comments comments'
+      'footer  footer  footer';
+  }
+
+  .home-page {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'header  header'
+      'content content'
+      'widgets widgets'
+      'comments comments'
+      'footer  footer ';
+  }
+
+  .page-aside {
+    padding-top: 340px;
+    grid-area: aside;
+    grid-template-columns: 1fr;
+    align-content: start;
+    grid-template-areas:
+      'mailchimp'
+      'share'
+      'bio'
+      'latestposts'
+      'tags'
+      'cats'
+      'instagram';
+  }
+
+  .home-page .page-aside {
+    padding-top: 0;
+    grid-area: widgets;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'mailchimp bio'
+      'latestposts instagram'
+      'tags cats';
+  }
+}
+
+@media (min-width: 1140px) {
+  .home-page .page-aside {
+    padding-top: 0;
+    grid-area: widgets;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      'mailchimp bio instagram'
+      'latestposts latestposts latestposts';
+  }
+}
+
+@media (min-width: 1280px) {
+  .wrapper {
+    grid-template-columns: var(--edges-width) 1fr 1fr 1fr var(--edges-width);
+    grid-template-areas:
+      '. header  header  header .'
+      '. content content aside .'
+      '. widgets widgets  widgets .'
+      '. comments comments comments. '
+      '. footer  footer  footer .';
+  }
+
+  .home-page {
+    grid-template-columns: var(--edges-width) 1fr 1fr var(--edges-width);
+    grid-template-areas:
+      '. header  header .'
+      '. content content .'
+      '. widgets widgets .'
+      '. comments comments .'
+      '. footer footer .';
+  }
+}
+
+/****
+**  END MAIN DIV STYLES
+****/
+
+/**** 
+** START page specific styles 
+****/
+
+/*** END BLOG PAGE ***/
+
+.inner-article p {
+  padding: 1.5rem 0;
+  height: 8rem;
+}
+
+.inner-article hr {
+  margin: 1.5rem 0;
+}
+
+.inner-article .categories-icon {
+  vertical-align: top;
+  margin-left: -0.15rem;
+  margin-right: 0.1rem;
+}
+
+.inner-article .tags-icon {
+  vertical-align: top;
+  margin-left: -0.15rem;
+  margin-right: 0.3rem;
+}
+
+.inner-article h3 {
+  text-align: left;
+  padding-left: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.inner-article ul {
+  padding: 0;
+  margin: 0;
+}
+
+.inner-article ul li {
+  list-style-type: none;
+  border-bottom: 1px solid var(--grey-color);
+  padding: 0.25rem 0 0.75rem 0;
+}
+
+.inner-article ul li a {
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+/*** END BLOG PAGE ***/
+
+/**** 
+** START page specific styles 
+****/
+
+/****
+**
+** WIDGETS STYLES NOTE: Look for subsections. These are the styles for individual widget, as needed.
+**
+****/
+
+/**** START page-navigation.js and single-blog-post.js page navigation STYLES ****/
+
+.post .article__body img {
+  border: 1px solid var(--black-color);
+}
+.post .article__body .gatsby-resp-image-wrapper {
+  margin: 1.5rem;
+}
+.post header img {
+  border: none;
+}
+
+.previous-next-post-nav {
+  color: var(--black-color);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--grey-color);
+}
+
+.blog-page .previous-next-post-nav {
+  min-height: 3rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.blog-page .previous-next-post-nav .nav-next-page-span {
+  text-align: right;
+}
+
+.previous-next-post-nav svg {
+  vertical-align: middle;
+}
+
+.previous-next-post-nav div {
+  width: 100%;
+  padding: 1rem 1.25rem;
+}
+
+.previous-next-post-nav div:last-child {
+  text-align: right;
+}
+
+.previous-next-post-nav div strong {
+  padding-left: 0.45rem;
+}
+
+.previous-next-post-nav div strong:last-of-type {
+  padding-right: 0.45rem;
+}
+.span-previous {
+  display: inline-block;
+  margin-left: 1.45rem;
+  margin-right: 1.45rem;
+}
+
+.span-next {
+  display: inline-block;
+  margin-left: 1.45rem;
+  margin-right: 1.45rem;
+}
+
+@media (min-width: 732px) {
+  .previous-next-post-nav div {
+    width: 100%;
+    padding: 1rem 7%;
+  }
+}
+
+@media (min-width: 768px) {
+  .single-blog-post-page main {
+    grid-area: content;
+    width: 100%;
+  }
+}
+
+/**** END page-navigation.js and single-blog-post.js page navigation STYLES ****/
+
+/**** START text-widget.js STYLES ****/
+
+.text-widget {
+  background-color: var(--grey-color);
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.text-widget p {
+  padding: 0;
+  margin: 0;
+}
+
+/**** END text-widget.js STYLES ****/
+
+/**** START bio.js STYLES ****/
+
+.bio {
+  padding: 1.5rem;
+  padding-bottom: 0;
+  grid-area: bio;
+}
+
+.bio img {
+  border: none;
+}
+
+@media (min-width: 568px) {
+  .bio {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+      'header header'
+      'image paragraph'
+      'contact contact'
+      'social social';
+  }
+  .bio > h3 {
+    grid-area: header;
+  }
+  .bio > figure {
+    grid-area: image;
+  }
+  .bio > p {
+    grid-area: paragraph;
+    padding: 1rem 1rem;
+  }
+  .bio > h4 {
+    grid-area: contact;
+    text-align: center;
+  }
+  .bio ul {
+    grid-area: social;
+  }
+}
+
+.bio p {
+  margin-top: 1rem;
+}
+
+.bio ul {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 0;
+}
+.bio ul li {
+  list-style: none;
+}
+
+.bio img {
+  border-radius: 5px;
+  margin-bottom: 0;
+}
+
+@media (min-width: 640px) {
+  .bio {
+    padding: 1.5rem 8%;
+  }
+}
+
+@media (min-width: 732px) {
+  .bio ul {
+    justify-content: space-evenly;
+  }
+}
+
+@media (min-width: 768px) {
+  .bio {
+    grid-template-columns: 100%;
+    grid-template-areas:
+      'header'
+      'image'
+      'paragraph'
+      'contact'
+      'social';
+    background-color: var(--white-color);
+  }
+}
+
+@media (min-width: 850px) {
+  .bio {
+    padding: 8% 16%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bio {
+    padding: 8% 10%;
+  }
+  .bio p {
+    padding: 0;
+  }
+}
+
+/**** END bio.js STYLES ****/
+
+/**** start social-share.js STYLES ****/
+
+.social-share {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0rem;
+  grid-area: share;
+}
+
+.social-share ul {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  margin-left: 0;
+  margin-bottom: 0;
+}
+
+.social-share ul li {
+  list-style: none;
+  margin-bottom: 0;
+}
+
+.social-share ul li span {
+  line-height: 3.2;
+  margin: 0;
+}
+
+.social-share button {
+  margin: 0;
+}
+
+/**** END social-share STYLES ****/
+
+/**** START social-follow-me.js STYLES ****/
+
+.social-follow-me ul {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 0;
+}
+
+.social-follow-me ul li {
+  list-style: none;
+}
+
+.social-share button {
+  color: var(--accent-color);
+}
+
+.social-follow-me li,
+.social-follow-me ul li {
+  list-style-type: none;
+}
+
+header .social-follow-me {
+  display: none;
+}
+
+footer .social-follow-me {
+  padding: 0 1.5rem;
+}
+
+footer .h3 {
+  text-align: center;
+}
+
+@media (min-width: 1500px) {
+  header .social-follow-me {
+    display: flex;
+    padding: 0;
+    margin: 0;
+  }
+  header .social-follow-me ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+  }
+
+  header .social-follow-me ul li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  header .social-share button {
+    color: var(--accent-color);
+  }
+
+  header .social-follow-me li,
+  header .social-follow-me ul li {
+    padding: 0 10px;
+    list-style-type: none;
+  }
+}
+/**** END social-share.js STYLES ****/
+
+/**** START latest-posts.js STYLES ****/
+
+.latest-posts {
+  padding: 1.5rem;
+  grid-area: latestposts;
+}
+.latest-posts ul {
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 568px) {
+  .latest-posts ul {
+    display: flex;
+  }
+}
+
+.latest-posts li {
+  list-style-type: none;
+  border-bottom: 1px solid var(--grey-color);
+  padding: 1rem;
+}
+
+.latest-posts svg {
+  vertical-align: middle;
+  margin-left: -1.3rem;
+  margin-right: 0.3rem;
+}
+
+.latest-posts .publish-icon {
+  margin-left: 0.25rem;
+  margin-right: 0;
+  vertical-align: center;
+}
+
+.latest-posts strong {
+  margin-left: 0.25rem;
+}
+
+.latest-posts span {
+  margin-top: 0.5rem;
+  display: inline-block;
+}
+
+@media (min-width: 640px) {
+  .latest-posts {
+    padding: 1.5rem 8%;
+  }
+}
+
+@media (min-width: 768px) {
+  .latest-posts ul {
+    flex-direction: column;
+  }
+
+  .latest-posts svg {
+    vertical-align: top;
+  }
+
+  .latest-posts li a strong {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 25ch;
+    display: inline-block;
+  }
+}
+
+@media (min-width: 850px) {
+  .latest-posts {
+    padding: 8% 16%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .latest-posts {
+    padding: 0 5% 0 5%;
+  }
+  .latest-posts li a strong {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 20ch;
+    display: inline-block;
+  }
+}
+
+@media (min-width: 1140px) {
+  .home-page .page-aside .latest-posts ul {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .home-page .page-aside .latest-posts li a strong {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 25ch;
+    display: inline-block;
+  }
+}
+
+/**** END latest-posts.js STYLES ****/
+
+/**** START mailchimp-sign-up.js STYLES ****/
+
+.mailchimp-sign-up {
+  padding: 1.5rem 1.5rem;
+  background-color: var(--dark-accent-color);
+  color: var(--white-color);
+  margin-bottom: 1.5rem;
+  text-align: left;
+  grid-area: mailchimp;
+}
+
+.mailchimp-sign-up h3 {
+  color: var(--white-color);
+  text-align: left;
+}
+
+.mailchimp-sign-up form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.mailchimp-sign-up form label {
+  margin: 0;
+}
+
+.mailchimp-input {
+  color: var(--dark-accent-color);
+  background-color: var(--white-color);
+  margin: 0.4rem 0 0.8rem;
+  width: 100%;
+  border: var(--dark-accent-color);
+}
+
+.mailchimp-input:focus {
+  color: var(--black-color);
+  background-color: var(--white-color);
+  outline: 2px solid var(--accent-color);
+  box-shadow: 2px solid var(--accent-color);
+}
+
+.mailchimp-button {
+  color: var(--black-color);
+  background-color: var(--accent-color);
+  cursor: pointer;
+  margin: 0 0 0;
+  width: 100%;
+  border: var(--dark-accent-color);
+}
+
+.mailchimp-button:hover {
+  color: var(--white-color);
+  background-color: var(--accent-color-shade);
+  cursor: pointer;
+}
+
+.mailchimp-button:active {
+  background-color: var(--accent-color);
+  box-shadow: inset 0px 0px 50px rgba(0, 0, 0, 0.3);
+}
+
+.mailchimp-button:focus {
+  outline: 3px dotted var(--white-color);
+  outline-offset: 2px;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+.mailchimp-sign-up small:last-of-type {
+  margin-bottom: 0;
+}
+
+@media (min-width: 640px) {
+  .mailchimp-sign-up {
+    padding: 1.5rem 8%;
+  }
+}
+
+@media (min-width: 850px) {
+  .mailchimp-sign-up {
+    padding: 8% 16%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mailchimp-sign-up {
+    padding: 8% 10%;
+  }
+}
+
+/**** END mailchimp-sign-up.js STYLES ****/
+
+/**** START instagram.js STYLES ****/
+
+.instagram-widget {
+  padding: 1.5rem;
+  grid-area: instagram;
+}
+
+.instagram-widget img {
+  border: none;
+}
+
+.instagram-widget ul {
+  margin-left: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.5rem 0.5rem;
+}
+
+.instagram-widget ul li {
+  list-style-type: none;
+  margin-bottom: 0;
+}
+
+@media (min-width: 640px) {
+  .instagram-widget {
+    padding: 1.5rem 8%;
+  }
+}
+
+@media (min-width: 850px) {
+  .instagram-widget {
+    padding: 8% 16%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .instagram-widget {
+    padding: 5% 10%;
+  }
+}
+
+/**** END instagram.js STYLES ****/
+
+/**** START icon-logo.js STYLES ****/
+
+.icon-logo {
+  padding: 1rem;
+}
+
+.icon-logo img {
+  border: none;
+}
+
+/**** END icon-logo.js STYLES ****/
+
+/****
+**  END WIDGETS STYLES
+****/
+
+/**** START talkyard comments STYLES ****/
+
+.talkyard-comments {
+  grid-area: comments;
+}
+
+.talkyard-comments p {
+  text-align: center;
+  margin-top: 0.25rem !important;
+  width: 100%;
+}
+
+/**** END talkyard comments STYLES ****/
+
+/****
+**
+** PRISMJS Styles NOTE: https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/ 
+**
+****/
+
+/* Add back the container background-color, border-radius, padding, margin and overflow that we removed from <pre>. */
+.gatsby-highlight {
+  /* background-color: #fdf6e3; */
+  border-radius: 0.3em;
+  margin: 0.5em 0rem 1.5rem !important; /* fix from solar styles */
+  padding: 1em;
+  overflow: auto;
+}
+
+@media (min-width: 768px) {
+  .gatsby-highlight {
+    margin: 0.5em 1rem 1.5rem !important; /* fix from solar styles */
+  }
+}
+
+/* Remove the default PrismJS theme background-color, border-radius, margin,
+   * padding and overflow.
+   * 1. Make the element just wide enough to fit its content.
+   * 2. Always fill the visible space in .gatsby-highlight.
+   * 3. Adjust the position of the line numbers */
+
+.gatsby-highlight pre[class*='language-'] {
+  /* background-color: transparent; */
+  margin: 0;
+  padding: 0;
+  overflow: initial;
+  float: left; /* 1 */
+  min-width: 100%; /* 2 */
+}
+
+/* If you already use line highlighting */
+/* Adjust the position of the line numbers */
+.gatsby-highlight pre[class*='language-'].line-numbers {
+  padding-left: 2.8em;
+}
+
+/* If you only want to use line numbering */
+
+.gatsby-highlight {
+  background-color: #2d2d2d;
+  /* background-color: #fdf6e3; */
+  border-radius: 0.3em;
+  margin: 0.5em 0;
+  padding: 1em;
+  overflow: auto;
+}
+
+.gatsby-highlight pre[class*='language-'].line-numbers {
+  padding: 0;
+  padding-left: 2.8em;
+  overflow: initial;
+}
+
+.command-line-prompt > span:before {
+  color: #999;
+  content: ' ';
+  display: block;
+  padding-right: 0.8em;
+}
+
+/* Prompt for all users */
+.command-line-prompt > span[data-user]:before {
+  content: '[' attr(data-user) '@' attr(data-host) '] $';
+}
+
+/* Prompt for root */
+.command-line-prompt > span[data-user='root']:before {
+  content: '[' attr(data-user) '@' attr(data-host) '] #';
+}
+
+.command-line-prompt > span[data-prompt]:before {
+  content: attr(data-prompt);
+}
+
+/* fix the font-size given by the solar theme.*/
+
+code[class*='language-'],
+pre[class*='language-'] {
+  font-size: 0.85rem !important;
+}
+
+/****
+**  END OF PRISMJS STYLES
+****/

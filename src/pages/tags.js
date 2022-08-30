@@ -3,8 +3,8 @@ import Layout from '../components/structure/layout';
 
 const TagsPage = () => {
   return (
-    <Layout>
-      <main>
+    <Layout pageClass={`tags-page`}>
+      <main className='page'>
         <article>
           <header>
             <h1>Tags</h1>

@@ -3,8 +3,8 @@ import Layout from '../components/structure/layout';
 
 const Tutorials = () => {
   return (
-    <Layout>
-      <main>
+    <Layout pageClass={`tutorials-page`}>
+      <main className='page'>
         <article>
           <header>
             <h1>Tutorials</h1>
