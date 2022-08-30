@@ -44,18 +44,18 @@ const Seo = ({
   const twitter = site.siteMetadata.social.twitter;
   const twitterAuthor = site.siteMetadata.social.twitterAuthor;
 
-  // const schemaWebPage = {
-  //   '@context': 'http://schema.org',
-  //   '@id': `${siteUrl}/${slug}`,
-  //   '@type': 'WebPage',
-  //   name: siteNameWebsite,
-  //   description: websiteDescription,
-  //   publisher: {
-  //     type: 'blog',
-  //     '@id': siteUrl,
-  //   },
-  //   license: 'http://creativecommons.org/licenses/by-nc-sa/3.0/us/deed.en_US',
-  // };
+  const schemaWebPage = {
+    '@context': 'http://schema.org',
+    '@id': `${siteUrl}/${slug}`,
+    '@type': 'WebPage',
+    name: siteNameWebsite,
+    description: websiteDescription,
+    publisher: {
+      type: 'blog',
+      '@id': siteUrl,
+    },
+    license: 'http://creativecommons.org/licenses/by-nc-sa/3.0/us/deed.en_US',
+  };
 
   return (
     <>
@@ -83,6 +83,11 @@ const Seo = ({
       {twitterAuthor && <meta name='twitter:creator' content={twitterAuthor} />}
 
       <meta name='robots' content='index, follow'></meta>
+      {!tags && (
+        <script type='application/ld+json'>
+          {JSON.stringify(schemaWebPage)}
+        </script>
+      )}
     </>
   );
 };
