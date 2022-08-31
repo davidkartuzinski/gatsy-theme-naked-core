@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
+import { getImage } from 'gatsby-plugin-image';
 import Layout from '../../components/structure/layout';
 import Aside from '../../components/structure/aside';
 import {
@@ -10,9 +11,11 @@ import {
 } from '../../components/core/icons';
 import { useSiteMetadata } from '../../hooks/use-site-metadata';
 import Seo from '../../components/core/Seo';
+import ResponsiveImage from '../../components/core/responsive-image';
 
 const BlogPost = ({ data }) => {
   const { siteUrl } = useSiteMetadata();
+  const heroImage = getImage(data.singlePost.frontmatter.hero_image);
 
   return (
     <Layout pageClass={`single-blog-post-page`}>
@@ -20,6 +23,12 @@ const BlogPost = ({ data }) => {
         <article>
           <header>
             <h1>{data.singlePost.frontmatter.title}</h1>
+            <ResponsiveImage
+              image={heroImage}
+              alt={data.singlePost.frontmatter.hero_image_alt}
+              figcaption={data.singlePost.frontmatter.hero_image_figcaption}
+              imageClassName={data.singlePost.frontmatter.hero_image_class}
+            />
 
             <p>
               <span>
@@ -31,7 +40,7 @@ const BlogPost = ({ data }) => {
               </span>
             </p>
           </header>
-          <div className='article__body'>Blog Post here</div>
+          <div className='article__body'>{data.singlePost.body}</div>
         </article>
       </main>
       <Aside></Aside>
@@ -54,6 +63,15 @@ export const query = graphql`
         title
         tags
         categories
+        hero_image_alt
+        hero_image_class
+        hero_image_figcaption
+        hero_image {
+          childImageSharp {
+            gatsbyImageData
+          }
+          publicURL
+        }
       }
     }
   }
@@ -61,16 +79,22 @@ export const query = graphql`
 
 export default BlogPost;
 
-// export const Head = ({data}) => title={data.singlePost.frontmatter.title}
-//         canonical={post.frontmatter.canonical}
-//         slug={post.frontmatter.slug}
-//         description={post.frontmatter.description}
-//         date={post.frontmatter.date}
-//         dateModified={post.frontmatter.dateModified}
-//         tags={post.frontmatter.tags}
-//         categories={post.frontmatter.categories}
-//         image={post.frontmatter.image.publicURL}
-//         headline={post.frontmatter.title}
-//         articleBody={post.rawBody}
-//         crumbs={crumbs}
-//         crumbLabel={customCrumbLabel};
+export const Head = ({ data }) => {
+  return (
+    <Seo
+      title={data.singlePost.frontmatter.title}
+      canonical={data.singlePost.frontmatter.canonical}
+      slug={data.singlePost.frontmatter.slug}
+      description={data.singlePost.frontmatter.description}
+      date={data.singlePost.frontmatter.date}
+      dateModified={data.singlePost.frontmatter.dateModified}
+      tags={data.singlePost.frontmatter.tags}
+      categories={data.singlePost.frontmatter.categories}
+      image={data.singlePost.frontmatter.hero_image.publicURL}
+      headline={data.singlePost.frontmatter.title}
+      articleBody={data.singlePost.body}
+      // crumbs={crumbs}
+      // crumbLabel={customCrumbLabel}
+    />
+  );
+};

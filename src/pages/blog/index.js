@@ -41,25 +41,26 @@ export const Head = () => <Seo title='Blog Posts' slug='blog' />;
 
 export const query = graphql`
   query blogPosts {
-    mdx {
-      id
-    }
     blogPosts: allMdx(sort: { fields: frontmatter___date, order: DESC }) {
       nodes {
-        id
         frontmatter {
-          date(formatString: "MMMM D, YYYY")
+          tags
+          hero_image_alt
+          hero_image_class
+          hero_image_figcaption
           slug
           title
+          hero_image {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
           author
           categories
-          description
-          image
-          imageAlt
-          imageFigcaption
-          tags
+          date(formatString: "MMMM D, YYYY")
         }
         excerpt(pruneLength: 250)
+        id
       }
     }
   }
