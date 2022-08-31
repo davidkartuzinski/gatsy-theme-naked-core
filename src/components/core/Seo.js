@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
+// Note: the  <html lang='en-US' /> is found in the gatasy-ssr.js file in root
+
 const Seo = ({
   title,
   canonical,
