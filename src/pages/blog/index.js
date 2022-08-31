@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Layout from '../components/structure/layout';
-import Aside from '../components/structure/aside';
-import Seo from '../components/core/Seo';
+import Layout from '../../components/structure/layout';
+import Aside from '../../components/structure/aside';
+import Seo from '../../components/core/Seo';
 import { graphql } from 'gatsby';
-import PostPreview from '../components/core/post-preview';
+import PostPreview from '../../components/core/post-preview';
 
 const BlogRollPage = ({ data }) => {
   return (

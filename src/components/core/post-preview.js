@@ -14,18 +14,18 @@ const PostPreview = ({
   excerpt,
 }) => (
   <>
-    <Link to={'/blog/' + slug}>
+    <Link to={`/blog/${slug}`}>
       <h2>{title}</h2>
     </Link>
     <figure>
-      <Link to={'/blog/' + slug}>
+      <Link to={`/blog/${slug}`}>
         {/* <Image fluid={image} alt={imageAlt} /> */} Image here
       </Link>
       <figcaption>{figcaption}</figcaption>
     </figure>
     <PublishDateIcon /> Published on <p>{date}</p>
     <p>{excerpt}</p>
-    <Link to={'/blog/' + slug} aria-label={`Read the rest: ${title} `}>
+    <Link to={`/blog/${slug}`} aria-label={`Read the rest: ${title} `}>
       Read the rest <ReadNextIcon />
     </Link>
     <hr />
