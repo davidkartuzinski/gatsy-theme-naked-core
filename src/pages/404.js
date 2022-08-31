@@ -1,49 +1,48 @@
-import * as React from "react"
-import { Link } from "gatsby"
-
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
+import * as React from 'react';
+import Layout from '../components/structure/layout';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import { graphql, useStaticQuery, Link } from 'gatsby';
+import Aside from '../components/structure/aside';
+import Seo from '../components/core/Seo';
 
 const NotFoundPage = () => {
+  const data = useStaticQuery(query);
+
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
-  )
-}
+    <Layout pageClass={`404-page`}>
+      <main className='page'>
+        <article>
+          <header>
+            <h1>Oops 404 - Not Found</h1>
+          </header>
+          <p>
+            <GatsbyImage
+              image={data.image404.childImageSharp.gatsbyImageData}
+              alt='404 oops, person in hole putting out sign.'
+            />
+          </p>
 
-export default NotFoundPage
+          <p>
+            You just hit a route that doesn&#39;t exist. Please check the url,
+            or go ahead and check out the <Link to='/blog'>blog</Link>.
+          </p>
+        </article>
+      </main>
+      <Aside />
+    </Layout>
+  );
+};
 
-export const Head = () => <title>Not found</title>
+export const Head = () => <Seo title='Page Not Found - 404' slug='404' />;
+
+export const query = graphql`
+  query image404 {
+    image404: file(relativePath: { eq: "404-page-not-found.png" }) {
+      childImageSharp {
+        gatsbyImageData(formats: AUTO, placeholder: BLURRED, layout: FULL_WIDTH)
+      }
+    }
+  }
+`;
+
+export default NotFoundPage;

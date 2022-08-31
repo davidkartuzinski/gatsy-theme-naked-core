@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 import { useSiteMetadata } from '../../hooks/use-site-metadata';
+import { HamburgerMenuIcon } from './icons.js';
 
 const Menu = () => {
   const { menuLinks } = useSiteMetadata();
@@ -23,7 +24,7 @@ const Menu = () => {
         aria-controls='nav-toggle'
         className='nav-toggle-label'
       >
-        #MENU#
+        <HamburgerMenuIcon size='35' />
       </label>
 
       <input

@@ -1,10 +1,12 @@
 import * as React from 'react';
 import Layout from '../components/structure/layout';
+import Aside from '../components/structure/aside';
+import Seo from '../components/core/Seo';
 
 const Tutorials = () => {
   return (
-    <Layout>
-      <main>
+    <Layout pageClass={`tutorials-page`}>
+      <main className='page'>
         <article>
           <header>
             <h1>Tutorials</h1>
@@ -19,10 +21,11 @@ const Tutorials = () => {
           </p>
         </article>
       </main>
+      <Aside />
     </Layout>
   );
 };
 
-export const Head = () => <title>Tutorials Page</title>;
+export const Head = () => <Seo title='Tutorials Page' slug='tutorials' />;
 
 export default Tutorials;

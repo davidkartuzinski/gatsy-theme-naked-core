@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Theme "Naked" core`,
+    websiteName: `Gatsby Theme "Naked" core`,
     logo: `naked-logo.png`,
     websiteDescription: `If HTML is the structure, and JavaScript the action, then CSS is the clothing. You just need to add CSS and content. This is the Gatsby Theme Naked. Just like what you wear in life, what your site wears is very personal. CSS in Js, check! No problem. CSS Modules, check! No Problem. Styled component libraries of different flavors? Check! No problem.`,
     menuLinks: [
@@ -28,7 +28,7 @@ module.exports = {
     author: `David Kartuzinski`,
     authorIntro: `David Kartuzinski is a Web Developer who loves open source and loves Gatsby.Js. Hire him today for your next project or unfilled job.`,
     authorImage: `david-kartuzinski.jpg`,
-    siteUrl: `https://gatsby-theme-naked.netlify.com/`,
+    siteUrl: `https://gatsythemenakedcore.gtsb.io`,
     legalName: `A Gatsby Naked Theme`,
     locale: `en-US`,
     textDirection: `ltr`,
@@ -46,7 +46,7 @@ module.exports = {
     social: {
       facebook: '',
       twitter: '@NakedGatsby',
-      twitterAuthor: '',
+      twitterAuthor: '@kai_dawei',
     },
     address: {
       city: 'Paris',
@@ -64,7 +64,6 @@ module.exports = {
     foundingDate: '2019',
   },
   plugins: [
-    'gatsby-plugin-image',
     'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-manifest',
@@ -73,6 +72,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-mdx',
+    'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
@@ -91,5 +91,63 @@ module.exports = {
       },
       __key: 'pages',
     },
+    // https://manifest-validator.appspot.com/
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `GatsbyThemeNaked`,
+        short_name: `NakedTheme`,
+        description: `If HTML is the structure, and JavaScript the action, then CSS is the clothing. You just need to add CSS and content. This is the Gatsby Theme Naked. Just like what you wear in life, what your site wears is very personal. CSS in Js, check! No problem. CSS Modules, check! No Problem. Styled component libraries of different flavors? Check! No problem.`,
+        start_url: `/`,
+        background_color: `#FFF7F0`,
+        theme_color: `#F3824A`,
+        lang: `en`,
+        display: `standalone`,
+        icon: `src/images/icon.png`,
+        icons: [
+          {
+            src: `src/images/favicons/android-chrome-192x192.png`,
+            sizes: `192x192`,
+            type: `image/png`,
+          },
+          {
+            src: `src/images/favicons/android-chrome-512x512.png`,
+            sizes: `512x512`,
+            type: `image/png`,
+          },
+          {
+            src: `src/images/favicons/apple-touch-icon.png`,
+            sizes: `180x180`,
+            type: `image/png`,
+          },
+          {
+            src: `src/images/favicons/favicon-16x16.png`,
+            sizes: `16x16`,
+            type: `image/png`,
+          },
+          {
+            src: `src/images/favicons/favicon-32x32.png`,
+            sizes: `32x32`,
+            type: `image/png`,
+          },
+          {
+            src: `src/images/favicons/favicon-32x32.png`,
+            sizes: `32x32`,
+            type: `image/png`,
+          },
+          {
+            src: `src/images/favicons/mstile-150x150.png`,
+            sizes: `150x150`,
+            type: `image/png`,
+          },
+          {
+            src: `src/images/favicons/safari-pinned-tab.svg`,
+            sizes: `1467x1467`,
+            type: `image/svg`,
+          },
+        ],
+      },
+    },
+    `gatsby-plugin-offline`,
   ],
 };

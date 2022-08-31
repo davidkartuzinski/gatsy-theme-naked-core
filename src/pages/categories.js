@@ -1,10 +1,12 @@
 import * as React from 'react';
 import Layout from '../components/structure/layout';
+import Aside from '../components/structure/aside';
+import Seo from '../components/core/Seo';
 
 const CategoriesPage = () => {
   return (
-    <Layout>
-      <main>
+    <Layout pageClass={`categories-page`}>
+      <main className='page'>
         <article>
           <header>
             <h1>Categories</h1>
@@ -17,10 +19,11 @@ const CategoriesPage = () => {
           </ul>
         </article>
       </main>
+      <Aside />
     </Layout>
   );
 };
 
-export const Head = () => <title>Tags Page</title>;
+export const Head = () => <Seo title='Categories Page' slug='categories' />;
 
 export default CategoriesPage;
