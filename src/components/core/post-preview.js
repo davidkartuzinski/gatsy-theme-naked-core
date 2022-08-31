@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
-// import { GatsbyImage } from 'gatsby-plugin-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { ReadNextIcon, PublishDateIcon } from './icons';
 
@@ -10,8 +10,9 @@ const PostPreview = ({
   imageAlt,
   title,
   date,
-  figcaption,
+  figCaption,
   excerpt,
+  imageClassName,
 }) => (
   <>
     <Link to={`/blog/${slug}`}>
@@ -19,9 +20,14 @@ const PostPreview = ({
     </Link>
     <figure>
       <Link to={`/blog/${slug}`}>
-        {/* <Image fluid={image} alt={imageAlt} /> */} Image here
+        <GatsbyImage
+          image={image}
+          alt={imageAlt}
+          figCaption={figCaption}
+          imageClassName={imageClassName}
+        />
       </Link>
-      <figcaption>{figcaption}</figcaption>
+      <figcaption>{figCaption}</figcaption>
     </figure>
     <PublishDateIcon /> Published on <p>{date}</p>
     <p>{excerpt}</p>

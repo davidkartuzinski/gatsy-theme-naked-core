@@ -12,8 +12,9 @@ import {
 import { useSiteMetadata } from '../../hooks/use-site-metadata';
 import Seo from '../../components/core/Seo';
 import ResponsiveImage from '../../components/core/responsive-image';
+import { MDXProvider } from '@mdx-js/react';
 
-const BlogPost = ({ data }) => {
+const BlogPost = ({ data, children }) => {
   const { siteUrl } = useSiteMetadata();
   const heroImage = getImage(data.singlePost.frontmatter.hero_image);
 
@@ -40,7 +41,9 @@ const BlogPost = ({ data }) => {
               </span>
             </p>
           </header>
-          <div className='article__body'>{data.singlePost.body}</div>
+          <div className='article__body'>
+            <MDXProvider>{children}</MDXProvider>
+          </div>
         </article>
       </main>
       <Aside></Aside>

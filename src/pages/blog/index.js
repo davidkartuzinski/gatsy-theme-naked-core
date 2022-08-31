@@ -19,12 +19,16 @@ const BlogRollPage = ({ data }) => {
                 <article key={node.id} className='inner-article'>
                   <PostPreview
                     slug={node.frontmatter.slug}
-                    // image={node.frontmatter.image.childImageSharp.fluid}
-                    // imageAlt={node.frontmatter.imageAlt}
-                    figcaption={node.frontmatter.imageFigcaption}
+                    image={
+                      node.frontmatter.hero_image.childImageSharp
+                        .gatsbyImageData
+                    }
+                    ImageAlt={node.frontmatter.hero_image_alt}
+                    figCaption={node.frontmatter.hero_image_figcaption}
                     title={node.frontmatter.title}
                     date={node.frontmatter.date}
                     excerpt={node.frontmatter.description}
+                    imageClassName={node.frontmatter.hero_image_class}
                   />
                 </article>
               );
@@ -48,6 +52,7 @@ export const query = graphql`
           hero_image_alt
           hero_image_class
           hero_image_figcaption
+          hero_image_class
           slug
           title
           hero_image {
