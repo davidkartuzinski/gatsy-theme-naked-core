@@ -12,6 +12,7 @@ import {
 import { useSiteMetadata } from '../../hooks/use-site-metadata';
 import Seo from '../../components/core/Seo';
 import ResponsiveImage from '../../components/core/responsive-image';
+import TextWidget from '../../components/widgets/text-widget';
 import { MDXProvider } from '@mdx-js/react';
 import Code from '../../components/core/code-mdx';
 
@@ -73,6 +74,7 @@ const BlogPost = ({ data, children }) => {
               </span>
             </p>
           </header>
+          <TextWidget />
           <div className='article__body'>
             <MDXProvider components={components}>{children}</MDXProvider>
           </div>

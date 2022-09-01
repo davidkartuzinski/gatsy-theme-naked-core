@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import theme from 'prism-react-renderer/themes/nightOwl';
+import theme from 'prism-react-renderer/themes/vsDark';
 
 // https://www.lekoarts.de/garden/adding-line-numbers-and-code-highlighting-to-mdx
 

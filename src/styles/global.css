@@ -1599,143 +1599,6 @@ footer .h3 {
 
 /**** END latest-posts.js STYLES ****/
 
-/**** START mailchimp-sign-up.js STYLES ****/
-
-.mailchimp-sign-up {
-  padding: 1.5rem 1.5rem;
-  background-color: var(--dark-accent-color);
-  color: var(--white-color);
-  margin-bottom: 1.5rem;
-  text-align: left;
-  grid-area: mailchimp;
-}
-
-.mailchimp-sign-up h3 {
-  color: var(--white-color);
-  text-align: left;
-}
-
-.mailchimp-sign-up form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.mailchimp-sign-up form label {
-  margin: 0;
-}
-
-.mailchimp-input {
-  color: var(--dark-accent-color);
-  background-color: var(--white-color);
-  margin: 0.4rem 0 0.8rem;
-  width: 100%;
-  border: var(--dark-accent-color);
-}
-
-.mailchimp-input:focus {
-  color: var(--black-color);
-  background-color: var(--white-color);
-  outline: 2px solid var(--accent-color);
-  box-shadow: 2px solid var(--accent-color);
-}
-
-.mailchimp-button {
-  color: var(--black-color);
-  background-color: var(--accent-color);
-  cursor: pointer;
-  margin: 0 0 0;
-  width: 100%;
-  border: var(--dark-accent-color);
-}
-
-.mailchimp-button:hover {
-  color: var(--white-color);
-  background-color: var(--accent-color-shade);
-  cursor: pointer;
-}
-
-.mailchimp-button:active {
-  background-color: var(--accent-color);
-  box-shadow: inset 0px 0px 50px rgba(0, 0, 0, 0.3);
-}
-
-.mailchimp-button:focus {
-  outline: 3px dotted var(--white-color);
-  outline-offset: 2px;
-}
-
-button::-moz-focus-inner {
-  border: 0;
-}
-
-.mailchimp-sign-up small:last-of-type {
-  margin-bottom: 0;
-}
-
-@media (min-width: 640px) {
-  .mailchimp-sign-up {
-    padding: 1.5rem 8%;
-  }
-}
-
-@media (min-width: 850px) {
-  .mailchimp-sign-up {
-    padding: 8% 16%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .mailchimp-sign-up {
-    padding: 8% 10%;
-  }
-}
-
-/**** END mailchimp-sign-up.js STYLES ****/
-
-/**** START instagram.js STYLES ****/
-
-.instagram-widget {
-  padding: 1.5rem;
-  grid-area: instagram;
-}
-
-.instagram-widget img {
-  border: none;
-}
-
-.instagram-widget ul {
-  margin-left: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 0.5rem 0.5rem;
-}
-
-.instagram-widget ul li {
-  list-style-type: none;
-  margin-bottom: 0;
-}
-
-@media (min-width: 640px) {
-  .instagram-widget {
-    padding: 1.5rem 8%;
-  }
-}
-
-@media (min-width: 850px) {
-  .instagram-widget {
-    padding: 8% 16%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .instagram-widget {
-    padding: 5% 10%;
-  }
-}
-
-/**** END instagram.js STYLES ****/
-
 /**** START icon-logo.js STYLES ****/
 
 .icon-logo {
@@ -1751,20 +1614,6 @@ button::-moz-focus-inner {
 /****
 **  END WIDGETS STYLES
 ****/
-
-/**** START talkyard comments STYLES ****/
-
-.talkyard-comments {
-  grid-area: comments;
-}
-
-.talkyard-comments p {
-  text-align: center;
-  margin-top: 0.25rem !important;
-  width: 100%;
-}
-
-/**** END talkyard comments STYLES ****/
 
 /****
 **
@@ -1809,6 +1658,7 @@ li > code {
   tab-size: 4;
   hyphens: none;
   border-radius: 0.3em;
+  background-color: #2d2d2d !important; /* override terrible bg color */
 }
 
 .line-number-style {
