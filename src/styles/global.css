@@ -94,12 +94,6 @@
 
 /** BASIC STRUCTURE STYLES THAT CAN BE DELETED, REPLACED OR USED IN OTHER PLACES **/
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-}
-
 h1 {
   text-align: center;
 }
@@ -1774,91 +1768,71 @@ button::-moz-focus-inner {
 
 /****
 **
-** PRISMJS Styles NOTE: https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/ 
+** PRISM REACT RENDERER Styles NOTE: https://www.lekoarts.de/garden/adding-line-numbers-and-code-highlighting-to-mdx - The below CSS is modified from this article.
 **
 ****/
 
-/* Add back the container background-color, border-radius, padding, margin and overflow that we removed from <pre>. */
-.gatsby-highlight {
-  /* background-color: #fdf6e3; */
-  border-radius: 0.3em;
-  margin: 0.5em 0rem 1.5rem !important; /* fix from solar styles */
-  padding: 1em;
-  overflow: auto;
-}
-
-@media (min-width: 768px) {
-  .gatsby-highlight {
-    margin: 0.5em 1rem 1.5rem !important; /* fix from solar styles */
-  }
-}
-
-/* Remove the default PrismJS theme background-color, border-radius, margin,
-   * padding and overflow.
-   * 1. Make the element just wide enough to fit its content.
-   * 2. Always fill the visible space in .gatsby-highlight.
-   * 3. Adjust the position of the line numbers */
-
-.gatsby-highlight pre[class*='language-'] {
-  /* background-color: transparent; */
-  margin: 0;
-  padding: 0;
-  overflow: initial;
-  float: left; /* 1 */
-  min-width: 100%; /* 2 */
-}
-
-/* If you already use line highlighting */
-/* Adjust the position of the line numbers */
-.gatsby-highlight pre[class*='language-'].line-numbers {
-  padding-left: 2.8em;
-}
-
-/* If you only want to use line numbering */
-
-.gatsby-highlight {
-  background-color: #2d2d2d;
-  /* background-color: #fdf6e3; */
-  border-radius: 0.3em;
-  margin: 0.5em 0;
-  padding: 1em;
-  overflow: auto;
-}
-
-.gatsby-highlight pre[class*='language-'].line-numbers {
-  padding: 0;
-  padding-left: 2.8em;
+.prism-code {
+  font-size: 0.85rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  -webkit-overflow-scrolling: touch;
+  background-color: transparent;
   overflow: initial;
 }
 
-.command-line-prompt > span:before {
-  color: #999;
-  content: ' ';
-  display: block;
-  padding-right: 0.8em;
+.token {
+  display: inline-block;
 }
 
-/* Prompt for all users */
-.command-line-prompt > span[data-user]:before {
-  content: '[' attr(data-user) '@' attr(data-host) '] $';
+p > code,
+li > code {
+  background: rgb(1, 22, 39);
+  color: rgb(214, 222, 235);
+  padding: 0.4em 0.3rem;
 }
 
-/* Prompt for root */
-.command-line-prompt > span[data-user='root']:before {
-  content: '[' attr(data-user) '@' attr(data-host) '] #';
+.gatsby-highlight {
+  font-size: 1rem;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+  border-radius: 0.3em;
 }
 
-.command-line-prompt > span[data-prompt]:before {
-  content: attr(data-prompt);
+.gatsby-highlight > code[class*='language-'],
+.gatsby-highlight > pre[class*='language-'] {
+  word-spacing: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+  line-height: 1.5;
+  tab-size: 4;
+  hyphens: none;
+  border-radius: 0.3em;
 }
 
-/* fix the font-size given by the solar theme.*/
+.line-number-style {
+  display: inline-block;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 1.2em;
+  user-select: none;
+  opacity: 0.3;
+  text-align: center;
+  position: relative;
+}
 
-code[class*='language-'],
-pre[class*='language-'] {
-  font-size: 0.85rem !important;
+.highlight-line {
+  background-color: rgb(2, 55, 81);
+  border-left: 4px solid rgb(2, 155, 206);
+}
+
+.highlight-line .line-number-style {
+  opacity: 0.5;
+  width: calc(1.2em - 4px);
+  left: -2p;
 }
 
 /****
-**  END OF PRISMJS STYLES
+**  END OF PRISM REACT RENDERER STYLES
 ****/

@@ -13,6 +13,38 @@ import { useSiteMetadata } from '../../hooks/use-site-metadata';
 import Seo from '../../components/core/Seo';
 import ResponsiveImage from '../../components/core/responsive-image';
 import { MDXProvider } from '@mdx-js/react';
+import Code from '../../components/core/code-mdx';
+
+const preToCodeBlock = (preProps) => {
+  if (preProps?.children?.type === `code`) {
+    const {
+      children: codeString,
+      className = ``,
+      ...props
+    } = preProps.children.props;
+
+    const match = className.match(/language-([\0-\uFFFF]*)/);
+    return {
+      codeString: codeString.trim(),
+      className,
+      language: match !== null ? match[1] : ``,
+      ...props,
+    };
+  }
+
+  return undefined;
+};
+
+const components = {
+  pre: (preProps) => {
+    const props = preToCodeBlock(preProps);
+    if (props) {
+      return <Code {...props} />;
+    } else {
+      return <pre {...preProps} />;
+    }
+  },
+};
 
 const BlogPost = ({ data, children }) => {
   const { siteUrl } = useSiteMetadata();
@@ -42,7 +74,7 @@ const BlogPost = ({ data, children }) => {
             </p>
           </header>
           <div className='article__body'>
-            <MDXProvider>{children}</MDXProvider>
+            <MDXProvider components={components}>{children}</MDXProvider>
           </div>
         </article>
       </main>
