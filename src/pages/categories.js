@@ -2,11 +2,20 @@ import * as React from 'react';
 import Layout from '../components/structure/layout';
 import Aside from '../components/structure/aside';
 import Seo from '../components/core/Seo';
+import NakedBreadcrumb from '../components/core/breadcrumb';
 
-const CategoriesPage = () => {
+const CategoriesPage = ({ pageContext }) => {
+  const {
+    breadcrumb: { crumbs },
+  } = pageContext;
+
+  // const customCrumbLabel = location.pathname.toLowerCase().replace('-', ' ');
+  const customCrumbLabel = '/';
+
   return (
     <Layout pageClass={`categories-page`}>
       <main className='page'>
+        <NakedBreadcrumb crumbs={crumbs} crumbLabel={customCrumbLabel} />
         <article>
           <header>
             <h1>Categories</h1>

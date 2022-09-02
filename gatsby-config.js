@@ -64,6 +64,21 @@ module.exports = {
     foundingDate: '2019',
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-breadcrumb`,
+      options: {
+        useAutoGen: true,
+        autoGenHomeLabel: `Home`,
+        exclude: [
+          `**/dev-404-page/**`,
+          `**/404/**`,
+          `**/404.html`,
+          `**/offline-plugin-app-shell-fallback/**`,
+        ],
+        crumbLabelUpdates: [],
+      },
+    },
+
     'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-manifest',

@@ -4,11 +4,20 @@ import Aside from '../../components/structure/aside';
 import Seo from '../../components/core/Seo';
 import { graphql } from 'gatsby';
 import PostPreview from '../../components/core/post-preview';
+import NakedBreadcrumb from '../../components/core/breadcrumb';
 
-const BlogRollPage = ({ data }) => {
+const BlogRollPage = ({ data, pageContext }) => {
+  const {
+    breadcrumb: { crumbs },
+  } = pageContext;
+
+  // const customCrumbLabel = location.pathname.toLowerCase().replace('-', ' ');
+  const customCrumbLabel = '/';
+
   return (
     <Layout pageClass={`blog-page`}>
       <main className='page'>
+        <NakedBreadcrumb crumbs={crumbs} crumbLabel={customCrumbLabel} />
         <article>
           <header>
             <h1>Blog Posts</h1>
