@@ -15,6 +15,7 @@ import ResponsiveImage from '../../components/core/responsive-image';
 import TextWidget from '../../components/widgets/text-widget';
 import { MDXProvider } from '@mdx-js/react';
 import Code from '../../components/core/code-mdx';
+import NakedBreadcrumb from '../../components/core/breadcrumb';
 
 const preToCodeBlock = (preProps) => {
   if (preProps?.children?.type === `code`) {
@@ -47,13 +48,22 @@ const components = {
   },
 };
 
-const BlogPost = ({ data, children }) => {
+const BlogPost = ({ data, children, pageContext }) => {
   const { siteUrl } = useSiteMetadata();
   const heroImage = getImage(data.singlePost.frontmatter.hero_image);
+
+  const {
+    breadcrumb: { crumbs },
+  } = pageContext;
+
+  // const customCrumbLabel = location.pathname.toLowerCase().replace('-', ' ');
+  const customCrumbLabel = '/';
 
   return (
     <Layout pageClass={`single-blog-post-page`}>
       <main className='post'>
+        <NakedBreadcrumb crumbs={crumbs} crumbLabel={customCrumbLabel} />
+
         <article>
           <header>
             <h1>{data.singlePost.frontmatter.title}</h1>

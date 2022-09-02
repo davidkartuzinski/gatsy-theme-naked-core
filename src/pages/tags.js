@@ -2,11 +2,21 @@ import * as React from 'react';
 import Layout from '../components/structure/layout';
 import Aside from '../components/structure/aside';
 import Seo from '../components/core/Seo';
+import NakedBreadcrumb from '../components/core/breadcrumb';
 
-const TagsPage = () => {
+const TagsPage = ({ pageContext }) => {
+  const {
+    breadcrumb: { crumbs },
+  } = pageContext;
+
+  // const customCrumbLabel = location.pathname.toLowerCase().replace('-', ' ');
+  const customCrumbLabel = '/';
+
   return (
     <Layout pageClass={`tags-page`}>
       <main className='page'>
+        <NakedBreadcrumb crumbs={crumbs} crumbLabel={customCrumbLabel} />
+
         <article>
           <header>
             <h1>Tags</h1>
