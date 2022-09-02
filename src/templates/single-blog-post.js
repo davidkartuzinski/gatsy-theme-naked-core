@@ -1,21 +1,22 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { MDXProvider } from '@mdx-js/react';
 import { getImage } from 'gatsby-plugin-image';
-import Layout from '../../components/structure/layout';
-import Aside from '../../components/structure/aside';
+import Layout from '../components/structure/layout';
+import Aside from '../components/structure/aside';
+import ResponsiveImage from '../components/core/responsive-image';
+import Seo from '../components/core/Seo';
 import {
   PreviousPageIcon,
   NextPageIcon,
   AuthorIcon,
   PublishDateIcon,
-} from '../../components/core/icons';
-import { useSiteMetadata } from '../../hooks/use-site-metadata';
-import Seo from '../../components/core/Seo';
-import ResponsiveImage from '../../components/core/responsive-image';
-import TextWidget from '../../components/widgets/text-widget';
-import { MDXProvider } from '@mdx-js/react';
-import Code from '../../components/core/code-mdx';
-import NakedBreadcrumb from '../../components/core/breadcrumb';
+} from '../components/core/icons';
+import NakedBreadcrumb from '../components/core/breadcrumb';
+import TextWidget from '../components/widgets/text-widget';
+import Code from '../components/core/code-mdx';
+import { useSiteMetadata } from '../hooks/use-site-metadata';
 
 const preToCodeBlock = (preProps) => {
   if (preProps?.children?.type === `code`) {
@@ -84,7 +85,15 @@ const BlogPost = ({ data, children, pageContext, location }) => {
           </header>
           <TextWidget />
           <div className='article__body'>
+            {/* ///NONE OF THE BELOW QUERIES WORK, EXCEPT THE LAST ONE */}
+            <MDXProvider components={components}>
+              {data.singlePost.body}
+            </MDXProvider>
+            <MDXRenderer>{children}</MDXRenderer>
             <MDXProvider components={components}>{children}</MDXProvider>
+            {children}
+            {/* /// THE DATA APPEARS UNFORMATTED WITH BELOW QUERY. */}
+            {data.singlePost.body}
           </div>
         </article>
       </main>
@@ -94,8 +103,11 @@ const BlogPost = ({ data, children, pageContext, location }) => {
 };
 
 export const query = graphql`
-  query ($id: String) {
-    singlePost: mdx(id: { eq: $id }) {
+  query ($slug: String) {
+    singlePost: mdx(fields: { slug: { eq: $slug } }) {
+      fields {
+        slug
+      }
       id
       body
       frontmatter {

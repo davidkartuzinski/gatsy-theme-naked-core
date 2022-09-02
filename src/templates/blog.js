@@ -1,17 +1,20 @@
 import * as React from 'react';
-import Layout from '../../components/structure/layout';
-import Aside from '../../components/structure/aside';
-import Seo from '../../components/core/Seo';
 import { graphql } from 'gatsby';
-import PostPreview from '../../components/core/post-preview';
-import NakedBreadcrumb from '../../components/core/breadcrumb';
+import Layout from '../components/structure/layout';
+import Aside from '../components/structure/aside';
+import Seo from '../components/core/Seo';
+import PostPreview from '../components/core/post-preview';
+import NakedBreadcrumb from '../components/core/breadcrumb';
+
+// FIX SEC PLUGIN and PAGE NAVIGATION PLUGIN
 
 const BlogRollPage = ({ data, pageContext, location }) => {
   const {
     breadcrumb: { crumbs },
   } = pageContext;
 
-  const customCrumbLabel = location.pathname.toLowerCase().replace('-', ' ');
+  // const customCrumbLabel = location.pathname.toLowerCase().replace('-', ' ');
+  const customCrumbLabel = '/';
 
   return (
     <Layout pageClass={`blog-page`}>
@@ -52,8 +55,12 @@ const BlogRollPage = ({ data, pageContext, location }) => {
 export const Head = () => <Seo title='Blog Posts' slug='blog' />;
 
 export const query = graphql`
-  query blogPosts {
-    blogPosts: allMdx(sort: { fields: frontmatter___date, order: DESC }) {
+  query blogPosts($skip: Int!, $limit: Int!) {
+    blogPosts: allMdx(
+      sort: { fields: frontmatter___date, order: DESC }
+      skip: $skip
+      limit: $limit
+    ) {
       nodes {
         frontmatter {
           tags
