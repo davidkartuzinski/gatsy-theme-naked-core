@@ -94,6 +94,12 @@
 
 /** BASIC STRUCTURE STYLES THAT CAN BE DELETED, REPLACED OR USED IN OTHER PLACES **/
 
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
 h1 {
   text-align: center;
 }
