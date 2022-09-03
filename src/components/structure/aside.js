@@ -6,7 +6,6 @@ const Aside = ({ children }) => {
     <>
       <aside className='page-aside'>
         {children}
-
         <Bio />
       </aside>
     </>
