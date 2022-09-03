@@ -1,18 +1,21 @@
 import * as React from 'react';
-import Layout from '../../components/structure/layout';
-import Aside from '../../components/structure/aside';
-import Seo from '../../components/core/seo';
+import Layout from '../components/structure/layout';
+import Aside from '../components/structure/aside';
+import Seo from '../components/core/seo';
 import { graphql } from 'gatsby';
-import PostPreview from '../../components/core/post-preview';
-import NakedBreadcrumb from '../../components/core/breadcrumb';
+import PostPreview from '../components/core/post-preview';
+import PageNavigation from '../components/core/page-navigation';
+import NakedBreadcrumb from '../components/core/breadcrumb';
 
-const BlogRollPage = ({ data, pageContext }) => {
+const BlogRollPage = ({ data, pageContext, location }) => {
   const {
     breadcrumb: { crumbs },
   } = pageContext;
 
   // const customCrumbLabel = location.pathname.toLowerCase().replace('-', ' ');
   const customCrumbLabel = '/';
+
+  const posts = data.blogPosts;
 
   return (
     <Layout pageClass={`blog-page`}>
@@ -22,25 +25,25 @@ const BlogRollPage = ({ data, pageContext }) => {
           <header>
             <h1>Blog Posts</h1>
           </header>
-          <ul>
-            {data.blogPosts.nodes.map((node) => {
-              return (
-                <article key={node.id} className='inner-article'>
-                  <PostPreview
-                    slug={node.frontmatter.slug}
-                    image={
-                      node.frontmatter.hero_image.childImageSharp
-                        .gatsbyImageData
-                    }
-                    imageAlt={node.frontmatter.hero_image_alt}
-                    title={node.frontmatter.title}
-                    date={node.frontmatter.date}
-                    excerpt={node.frontmatter.description}
-                  />
-                </article>
-              );
-            })}
-          </ul>
+          {posts.nodes.map((node) => {
+            return (
+              <article key={node.id} className='inner-article'>
+                <PostPreview
+                  slug={node.frontmatter.slug}
+                  image={
+                    node.frontmatter.hero_image.childImageSharp.gatsbyImageData
+                  }
+                  imageAlt={node.frontmatter.hero_image_alt}
+                  title={node.frontmatter.title}
+                  date={node.frontmatter.date}
+                  excerpt={node.frontmatter.description}
+                />
+              </article>
+            );
+          })}
+          {pageContext.numberOfPages > 1 && (
+            <PageNavigation pageContext={pageContext} />
+          )}
         </article>
       </main>
       <Aside />
@@ -64,10 +67,17 @@ export const Head = ({ pageContext }) => {
 };
 
 export const query = graphql`
-  query blogPosts {
-    blogPosts: allMdx(sort: { fields: frontmatter___date, order: DESC }) {
+  query blogPosts($skip: Int!, $limit: Int!) {
+    blogPosts: allMdx(
+      sort: { fields: frontmatter___date, order: DESC }
+      skip: $skip
+      limit: $limit
+    ) {
       nodes {
         excerpt(pruneLength: 250)
+        fields {
+          slug
+        }
         frontmatter {
           author
           categories
@@ -81,6 +91,7 @@ export const query = graphql`
           slug
           tags
           title
+          description
         }
         id
       }

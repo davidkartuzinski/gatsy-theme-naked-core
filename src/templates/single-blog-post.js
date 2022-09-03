@@ -1,17 +1,24 @@
 import * as React from 'react';
-import { graphql } from 'gatsby';
-import { getImage } from 'gatsby-plugin-image';
-import Layout from '../../components/structure/layout';
-import Aside from '../../components/structure/aside';
-import { AuthorIcon, PublishDateIcon } from '../../components/core/icons';
-import Seo from '../../components/core/seo';
-import ResponsiveImage from '../../components/core/responsive-image';
-import TextWidget from '../../components/widgets/text-widget';
+import { graphql, Link } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
-import Code from '../../components/core/code-mdx';
-import NakedBreadcrumb from '../../components/core/breadcrumb';
-import Categories from '../../components/core/categories';
-import Tags from '../../components/core/tags';
+import Layout from '../components/structure/layout';
+import Aside from '../components/structure/aside';
+import Tags from '../components/core/tags';
+import Categories from '../components/core/categories';
+import ResponsiveImage from '../components/core/responsive-image';
+import Seo from '../components/core/seo';
+import {
+  AuthorIcon,
+  PublishDateIcon,
+  PreviousPageIcon,
+  NextPageIcon,
+} from '../components/core/icons';
+import NakedBreadcrumb from '../components/core/breadcrumb';
+import TextWidget from '../components/widgets/text-widget';
+
+import { getImage } from 'gatsby-plugin-image';
+import Code from '../components/core/code-mdx';
 
 const preToCodeBlock = (preProps) => {
   if (preProps?.children?.type === `code`) {
@@ -48,6 +55,8 @@ const BlogPost = ({ data, children, pageContext }) => {
   const heroImage = getImage(data.singlePost.frontmatter.hero_image);
 
   const {
+    next,
+    previous,
     breadcrumb: { crumbs },
   } = pageContext;
 
@@ -79,9 +88,49 @@ const BlogPost = ({ data, children, pageContext }) => {
           </header>
           <TextWidget />
           <div className='article__body'>
-            <MDXProvider components={components}>{children}</MDXProvider>
+            <MDXProvider components={components}>
+              {/* {data.singlePost.body} */}
+              {children}
+            </MDXProvider>
           </div>
         </article>
+        <nav
+          className='previous-next-post-nav'
+          aria-label='Previous post or next post'
+        >
+          <div>
+            {previous ? (
+              <Link to={'/blog/' + previous.frontmatter.slug}>
+                <PreviousPageIcon />
+                <strong>Previous Article</strong>
+                <span className='span-previous'>
+                  {previous.frontmatter.title}
+                </span>
+                <br />
+              </Link>
+            ) : (
+              <Link to={'/blog/'}>
+                <PreviousPageIcon />
+                <strong>Back to Blog</strong>
+              </Link>
+            )}
+          </div>
+          <div>
+            {next ? (
+              <Link to={'/blog/' + next.frontmatter.slug}>
+                <strong>Next Article</strong>
+                <NextPageIcon />
+                <br />
+                <span className='span-next'> {next.frontmatter.title}</span>
+              </Link>
+            ) : (
+              <Link to={'/blog/'}>
+                <strong>Back to Blog</strong>
+                <NextPageIcon />
+              </Link>
+            )}
+          </div>
+        </nav>
       </main>
       <Aside>
         <Categories categories={data.singlePost.frontmatter.categories} />
