@@ -50,7 +50,20 @@ const BlogRollPage = ({ data, pageContext }) => {
   );
 };
 
-export const Head = () => <Seo title='Blog Posts' slug='blog' />;
+export const Head = ({ pageContext }) => {
+  const {
+    breadcrumb: { crumbs },
+  } = pageContext;
+  return (
+    <Seo
+      title={`Blog Posts`} // Just add the title of this page
+      canonical={``} // if there are two copies of a page, use this URL as main one.
+      slug={`blog`} // the URL the page is found. Enter relative location, eg "blog" for blog page
+      description={`This is the Gatsby Theme Naked. Read the blog and get an idea of what yours will look and feel like. We have content for you.`} // This summaries your web page, this page. Not the entire website. 130 words for mobile / 160 words for desktop.
+      crumbs={crumbs}
+    />
+  );
+};
 
 export const query = graphql`
   query blogPosts {
