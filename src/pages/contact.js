@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Layout from '../components/structure/layout';
+import ContactFormApp from '../components/optional/contact-form';
 import Aside from '../components/structure/aside';
 import Seo from '../components/core/seo';
 import NakedBreadcrumb from '../components/core/breadcrumb';
@@ -21,6 +22,7 @@ const Contact = ({ pageContext }) => {
             <h1>Contact Us</h1>
           </header>
           <p>Please feel free to contact us.</p>
+          <ContactFormApp />
         </article>
       </main>
       <Aside />
