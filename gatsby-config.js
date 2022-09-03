@@ -126,6 +126,7 @@ module.exports = {
       __key: 'pages',
     },
     {
+      // for the actual MDX files representing the blog posts.
       resolve: 'gatsby-source-filesystem',
       options: {
         name: `blog`,

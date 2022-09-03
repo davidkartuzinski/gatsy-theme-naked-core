@@ -27,11 +27,10 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
-  // const blogPostTemplate = require.resolve(
-  //   `./src/templates/single-blog-post.js`
-  // )
-
   // create variable to use for each type of templates
+  const blogPostTemplate = require.resolve(
+    `./src/templates/single-blog-post.js`
+  );
   const tagTemplate = require.resolve(`./src/templates/single-tag.js`);
   const categoryTemplate = require.resolve(
     `./src/templates/single-category.js`
@@ -47,6 +46,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           node {
             fields {
               slug
+            }
+            internal {
+              contentFilePath
             }
             frontmatter {
               tags
@@ -89,15 +91,35 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return;
   }
 
+  const posts = result.data.postsRemark.edges;
+  posts.forEach(({ node, next, previous }) => {
+    createPage({
+      path: '/blog' + node.fields.slug,
+      // https://www.npmjs.com/package/gatsby-plugin-mdx
+      // component: blogPostTemplate,
+      // component: `${blogPostTemplate}?__contentFilePath=/path/to/content.mdx`,
+      component: `${blogPostTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        slug: node.fields.slug,
+
+        // https://toripugh.com/blog/gatsby-blog--next-and-previous-links
+        next,
+        previous,
+      },
+    });
+  });
+
   // http://codekarate.com/daily-dose-of-drupal/gatsby-pagination-gatsby-awesome-pagination
 
-  // paginate({
-  //   createPage,
-  //   items: posts,
-  //   itemsPerPage: 2, // number of blog posts per page
-  //   pathPrefix: '/blog',
-  //   component: path.resolve(`./src/templates/blog.js`),
-  // });
+  paginate({
+    createPage,
+    items: posts,
+    itemsPerPage: 2, // number of blog posts per page
+    pathPrefix: '/blog',
+    component: path.resolve(`./src/templates/blog.js`),
+  });
 
   // extract tag data from the query
   const tags = result.data.tagsGroup.group;
