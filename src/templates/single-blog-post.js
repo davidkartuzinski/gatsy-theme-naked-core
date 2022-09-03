@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import Layout from '../components/structure/layout';
 import Aside from '../components/structure/aside';
@@ -141,8 +140,11 @@ const BlogPost = ({ data, children, pageContext }) => {
 };
 
 export const query = graphql`
-  query ($id: String) {
-    singlePost: mdx(id: { eq: $id }) {
+  query ($slug: String!) {
+    singlePost: mdx(fields: { slug: { eq: $slug } }) {
+      fields {
+        slug
+      }
       id
       body
       frontmatter {
