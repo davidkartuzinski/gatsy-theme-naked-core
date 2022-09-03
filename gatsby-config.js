@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+}); // Used to access variable e.g. FormSpree.io
+
 module.exports = {
   siteMetadata: {
     websiteName: `Gatsby Theme "Naked" core`,
