@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Layout from '../components/structure/layout';
 import Aside from '../components/structure/aside';
-import Seo from '../components/core/Seo';
+import Seo from '../components/core/seo';
 import NakedBreadcrumb from '../components/core/breadcrumb';
 
 const Contact = ({ pageContext }) => {

@@ -1,10 +1,16 @@
 import * as React from 'react';
+import { Link } from 'gatsby';
+import { TagsIcon } from '../components/core/icons.js';
+import Seo from '../components/core/seo';
 import Layout from '../components/structure/layout';
-import Aside from '../components/structure/aside';
-import Seo from '../components/core/Seo';
+import { useAllMdx } from '../hooks/use-all-mdx';
 import NakedBreadcrumb from '../components/core/breadcrumb';
+import Aside from '../components/structure/aside';
+import { toKebabCase } from '../utilities/helpers.js';
 
 const TagsPage = ({ pageContext }) => {
+  const { tags } = useAllMdx();
+
   const {
     breadcrumb: { crumbs },
   } = pageContext;
@@ -19,13 +25,19 @@ const TagsPage = ({ pageContext }) => {
 
         <article>
           <header>
-            <h1>Tags</h1>
+            <h1>
+              <TagsIcon />
+              Tags
+            </h1>
           </header>
           <ul>
-            <li>Tag</li>
-            <li>Tag</li>
-            <li>Tag</li>
-            <li>Tag</li>
+            {tags.map((tag) => (
+              <li key={tag.fieldValue}>
+                <Link to={`/tags/${toKebabCase(tag.fieldValue)}`}>
+                  {tag.fieldValue} ({tag.totalCount})
+                </Link>
+              </li>
+            ))}
           </ul>
         </article>
       </main>

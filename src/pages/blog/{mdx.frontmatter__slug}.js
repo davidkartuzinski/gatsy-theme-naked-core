@@ -4,12 +4,14 @@ import { getImage } from 'gatsby-plugin-image';
 import Layout from '../../components/structure/layout';
 import Aside from '../../components/structure/aside';
 import { AuthorIcon, PublishDateIcon } from '../../components/core/icons';
-import Seo from '../../components/core/Seo';
+import Seo from '../../components/core/seo';
 import ResponsiveImage from '../../components/core/responsive-image';
 import TextWidget from '../../components/widgets/text-widget';
 import { MDXProvider } from '@mdx-js/react';
 import Code from '../../components/core/code-mdx';
 import NakedBreadcrumb from '../../components/core/breadcrumb';
+import Categories from '../../components/core/categories';
+import Tags from '../../components/core/tags';
 
 const preToCodeBlock = (preProps) => {
   if (preProps?.children?.type === `code`) {
@@ -63,8 +65,6 @@ const BlogPost = ({ data, children, pageContext }) => {
             <ResponsiveImage
               image={heroImage}
               alt={data.singlePost.frontmatter.hero_image_alt}
-              figcaption={data.singlePost.frontmatter.hero_image_figcaption}
-              imageClassName={data.singlePost.frontmatter.hero_image_class}
             />
 
             <p>
@@ -83,7 +83,10 @@ const BlogPost = ({ data, children, pageContext }) => {
           </div>
         </article>
       </main>
-      <Aside></Aside>
+      <Aside>
+        <Categories categories={data.singlePost.frontmatter.categories} />
+        <Tags tags={data.singlePost.frontmatter.tags} />
+      </Aside>
     </Layout>
   );
 };
@@ -104,8 +107,6 @@ export const query = graphql`
         tags
         categories
         hero_image_alt
-        hero_image_class
-        hero_image_figcaption
         hero_image {
           childImageSharp {
             gatsbyImageData
@@ -118,25 +119,6 @@ export const query = graphql`
 `;
 
 export default BlogPost;
-
-// export const Head = ({ data }) => {
-//   return (
-//     <Seo
-//       title={data.singlePost.frontmatter.title}
-//       canonical={data.singlePost.frontmatter.canonical}
-//       slug={data.singlePost.frontmatter.slug}
-//       description={data.singlePost.frontmatter.description}
-//       date={data.singlePost.frontmatter.date}
-//       dateModified={data.singlePost.frontmatter.dateModified}
-//       tags={data.singlePost.frontmatter.tags}
-//       categories={data.singlePost.frontmatter.categories}
-//       image={data.singlePost.frontmatter.hero_image.publicURL}
-//       headline={data.singlePost.frontmatter.title}
-//       articleBody={data.singlePost.body}
-//       // crumbs={crumbs}
-//     />
-//   );
-// };
 
 export const Head = ({ data, pageContext }) => {
   const {

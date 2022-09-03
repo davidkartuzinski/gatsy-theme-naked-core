@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+// import { useStaticQuery, graphql } from 'gatsby';
 import wordsCounter from 'word-counting';
-import moment from 'moment';
+import * as dayjs from 'dayjs';
+import { useSiteMetadata } from '../../hooks/use-site-metadata';
 
 // Note: the  <html lang='en-US' /> is found in the gatasy-ssr.js file in root
 
@@ -19,44 +20,35 @@ const Seo = ({
   articleBody,
   crumbs,
 }) => {
-  const { site } = useStaticQuery(graphql`
-    query Seo {
-      site {
-        siteMetadata {
-          logo
-          websiteDescription
-          websiteName
-          textDirection
-          siteUrl
-          author
-          locale
-          social {
-            twitter
-            twitterAuthor
-          }
-        }
-      }
-    }
-  `);
+  const {
+    author: websiteAuthor,
+    locale: websiteLocale,
+    logo: websiteLogo,
+    siteUrl,
+    social,
+    // textDirection: websiteTextDirection,
+    websiteDescription: siteDescription,
+    websiteName,
+  } = useSiteMetadata();
 
-  const siteUrl = site.siteMetadata.siteUrl;
-  const siteNameWebsite = site.siteMetadata.websiteName;
-  const websiteDescription = site.siteMetadata.websiteDescription;
-  const author = site.siteMetadata.author;
-  const locale = site.siteMetadata.locale;
-  const logo = site.siteMetadata.logo;
-  const twitter = site.siteMetadata.social.twitter;
-  const twitterAuthor = site.siteMetadata.social.twitterAuthor;
+  const author = websiteAuthor;
+  const locale = websiteLocale;
+  const logo = websiteLogo;
+  const websiteUrl = siteUrl;
+  const twitter = social.twitter;
+  const twitterAuthor = social.twitterAuthor;
+  const websiteDescription = siteDescription;
+  const siteNameWebsite = websiteName;
 
   const schemaWebPage = {
     '@context': 'http://schema.org',
-    '@id': `${siteUrl}/${slug}`,
+    '@id': `${websiteUrl}/${slug}`,
     '@type': 'WebPage',
     name: siteNameWebsite,
     description: websiteDescription,
     publisher: {
       type: 'blog',
-      '@id': siteUrl,
+      '@id': websiteUrl,
     },
     license: 'http://creativecommons.org/licenses/by-nc-sa/3.0/us/deed.en_US',
   };
@@ -66,15 +58,15 @@ const Seo = ({
     '@context': 'http://schema.org',
     '@type': 'Article',
     author: author,
-    datePublished: moment(date).toISOString(),
-    datemodified: moment(dateModified).toISOString(),
+    datePublished: dayjs(date).toISOString(),
+    datemodified: dayjs(dateModified).toISOString(),
     mainEntityOfPage: 'True',
     headline: headline,
     // https://schema.org/articleSection like a category
     articleSection: `${categories && categories.slice(1, 2)}`,
     image: {
       '@type': 'imageObject',
-      url: `${siteUrl}/${image}`,
+      url: `${websiteUrl}/${image}`,
       height: '600',
       width: '800',
     },
@@ -83,7 +75,7 @@ const Seo = ({
       name: siteNameWebsite,
       logo: {
         '@type': 'imageObject',
-        url: `${siteUrl}/${logo}`,
+        url: `${websiteUrl}/${logo}`,
       },
     },
     wordCount: `${
@@ -130,36 +122,40 @@ const Seo = ({
 
   return (
     <>
-      {canonical && <link rel='canonical' href={`${siteUrl}/${canonical} `} />}
-      {!canonical && <link rel='canonical' href={`${siteUrl}/${slug}`} />}
+      {canonical && (
+        <link rel='canonical' href={`${websiteUrl}/${canonical} `} />
+      )}
+      {!canonical && <link rel='canonical' href={`${websiteUrl}/${slug}`} />}
       <title>
         {title} | {siteNameWebsite}
       </title>
+      console.log(siteNameWebsite)
       <meta name='description' content={description} />
-      <meta name='image' content={`${siteUrl}/${logo}`} />
+      <meta name='image' content={`${websiteUrl}/${logo}`} />
       <meta name='author' content={author} />
       {/* Reference: https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML */}
       {/* Open Graph https://ogp.me/ https://developers.facebook.com/docs/sharing/webmasters/ */}
       <meta property='og:locale' content={locale} />
       <meta property='og:site_name' content={siteNameWebsite} />
       {canonical && (
-        <meta property='og:url' content={`${siteUrl}/${canonical} `} />
+        <meta property='og:url' content={`${websiteUrl}/${canonical} `} />
       )}
-      {!canonical && <meta property='og:url' content={`${siteUrl}/${slug}`} />}
+      {!canonical && (
+        <meta property='og:url' content={`${websiteUrl}/${slug}`} />
+      )}
       {/* Only "articles" have tags, so check and make an article ... */}
       <meta property='og:type' content={tags ? 'article' : 'website'} />
       {/* If an article or not we show and image. Either from the article or the site logo.*/}
-
       {tags && (
         <meta
           property='article:published_time'
-          content={moment(date).toISOString()}
+          content={dayjs(date).toISOString()}
         />
       )}
       {tags && (
         <meta
           property='article:modified_time'
-          content={moment(dateModified).toISOString()}
+          content={dayjs(dateModified).toISOString()}
         />
       )}
       {tags &&
@@ -167,8 +163,8 @@ const Seo = ({
           <meta property='article:tag' content={tag} key={i} />
         ))}
       {tags && <meta property='article:author' content={author} />}
-      {tags && <meta property='og:image' content={`${siteUrl}${image}`} />}
-      {!tags && <meta property='og:image' content={`${siteUrl}/${logo}`} />}
+      {tags && <meta property='og:image' content={`${websiteUrl}${image}`} />}
+      {!tags && <meta property='og:image' content={`${websiteUrl}/${logo}`} />}
       {/* Twitter Graph - https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started */}
       <meta name='twitter:card' content='summary'></meta>
       <meta name='robots' content='index, follow'></meta>
