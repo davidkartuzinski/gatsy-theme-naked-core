@@ -28,6 +28,19 @@ const Contact = ({ pageContext }) => {
   );
 };
 
-export const Head = () => <Seo title='Contact Page' slug='contact' />;
+export const Head = ({ pageContext }) => {
+  const {
+    breadcrumb: { crumbs },
+  } = pageContext;
+  return (
+    <Seo
+      title={`Contact Us`} // Just add the title of this page
+      canonical={``} // if there are two copies of a page, use this URL as main one.
+      slug={`contact`} // the URL the page is found. Enter relative location, eg "blog" for blog page
+      description={`This is the Gatsby Theme Naked. You just need to add CSS and content. If you have questions, we have answers. Reach out now!`} // This summaries your web page, this page. Not the entire website. 130 words for mobile / 160 words for desktop. https://www.charactercountonline.com/
+      crumbs={crumbs}
+    />
+  );
+};
 
 export default Contact;

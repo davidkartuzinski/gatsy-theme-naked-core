@@ -105,7 +105,15 @@ const IndexPage = () => {
   );
 };
 
-export const Head = () => <Seo title='Home Page' slug='' />;
+export const Head = () => (
+  // https://www.advancedwebranking.com/blog/meta-tags-important-in-seo/
+  <Seo
+    title={`Home`} // Just add the title of this page
+    canonical={``} // if there are two copies of a page, use this URL as main one.
+    slug={``} // the URL the page is found. Enter relative location, eg "contact" for contact page
+    description={`This is the Gatsby Theme Naked. You just need to add CSS and content. You can use any CSS implementation you want. Take a look.`} // This summaries your web page, this page. Not the entire website. 130 words for mobile / 160 words for desktop.
+  />
+);
 
 export const query = graphql`
   query idea {

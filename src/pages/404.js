@@ -33,7 +33,20 @@ const NotFoundPage = () => {
   );
 };
 
-export const Head = () => <Seo title='Page Not Found - 404' slug='404' />;
+export const Head = ({ pageContext }) => {
+  const {
+    breadcrumb: { crumbs },
+  } = pageContext;
+  return (
+    <Seo
+      title={`404 - Page Not Found`} // Just add the title of this page
+      canonical={``} // if there are two copies of a page, use this URL as main one.
+      slug={`404`} // the URL the page is found. Enter relative location, eg "blog" for blog page
+      description={`This is the Gatsby Theme Naked. This is the 404 page. That means something went wrong. Don't worry, we have a Home page link.`} // This summaries your web page, this page. Not the entire website. 130 words for mobile / 160 words for desktop.
+      crumbs={crumbs}
+    />
+  );
+};
 
 export const query = graphql`
   query image404 {

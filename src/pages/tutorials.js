@@ -36,6 +36,19 @@ const Tutorials = ({ pageContext }) => {
   );
 };
 
-export const Head = () => <Seo title='Tutorials Page' slug='tutorials' />;
+export const Head = ({ pageContext }) => {
+  const {
+    breadcrumb: { crumbs },
+  } = pageContext;
+  return (
+    <Seo
+      title={`Theme Tutorials`} // Just add the title of this page
+      canonical={``} // if there are two copies of a page, use this URL as main one.
+      slug={`tutorials`} // the URL the page is found. Enter relative location, eg "blog" for blog page
+      description={`This is the Gatsby Theme Naked. We have tutorials on how to use this theme and how it makes your life easier. Take a look.`} // This summaries your web page, this page. Not the entire website. 130 words for mobile / 160 words for desktop.
+      crumbs={crumbs}
+    />
+  );
+};
 
 export default Tutorials;

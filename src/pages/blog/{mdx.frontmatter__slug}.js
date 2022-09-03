@@ -1,15 +1,9 @@
 import * as React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import { getImage } from 'gatsby-plugin-image';
 import Layout from '../../components/structure/layout';
 import Aside from '../../components/structure/aside';
-import {
-  PreviousPageIcon,
-  NextPageIcon,
-  AuthorIcon,
-  PublishDateIcon,
-} from '../../components/core/icons';
-import { useSiteMetadata } from '../../hooks/use-site-metadata';
+import { AuthorIcon, PublishDateIcon } from '../../components/core/icons';
 import Seo from '../../components/core/Seo';
 import ResponsiveImage from '../../components/core/responsive-image';
 import TextWidget from '../../components/widgets/text-widget';
@@ -49,7 +43,6 @@ const components = {
 };
 
 const BlogPost = ({ data, children, pageContext }) => {
-  const { siteUrl } = useSiteMetadata();
   const heroImage = getImage(data.singlePost.frontmatter.hero_image);
 
   const {
@@ -126,22 +119,46 @@ export const query = graphql`
 
 export default BlogPost;
 
-export const Head = ({ data }) => {
+// export const Head = ({ data }) => {
+//   return (
+//     <Seo
+//       title={data.singlePost.frontmatter.title}
+//       canonical={data.singlePost.frontmatter.canonical}
+//       slug={data.singlePost.frontmatter.slug}
+//       description={data.singlePost.frontmatter.description}
+//       date={data.singlePost.frontmatter.date}
+//       dateModified={data.singlePost.frontmatter.dateModified}
+//       tags={data.singlePost.frontmatter.tags}
+//       categories={data.singlePost.frontmatter.categories}
+//       image={data.singlePost.frontmatter.hero_image.publicURL}
+//       headline={data.singlePost.frontmatter.title}
+//       articleBody={data.singlePost.body}
+//       // crumbs={crumbs}
+//     />
+//   );
+// };
+
+export const Head = ({ data, pageContext }) => {
+  const {
+    breadcrumb: { crumbs },
+  } = pageContext;
+
   return (
+    // https://www.advancedwebranking.com/blog/meta-tags-important-in-seo/
     <Seo
-      title={data.singlePost.frontmatter.title}
-      canonical={data.singlePost.frontmatter.canonical}
-      slug={data.singlePost.frontmatter.slug}
-      description={data.singlePost.frontmatter.description}
-      date={data.singlePost.frontmatter.date}
+      title={data.singlePost.frontmatter.title} // Just add the title of this page
+      canonical={data.singlePost.frontmatter.canonical} // if there are two copies of a page, use this URL as main one.
+      slug={data.singlePost.frontmatter.slug} // the URL the page is found. Enter relative location, eg "contact" for contact page
+      description={data.singlePost.frontmatter.description} // This summaries your web page, this page. Not the entire website. 130 words for mobile / 160 words for desktop.
+      crumbs={crumbs}
+      // for BLOG POSTS ONLY
+      date={data.singlePost.frontmatter.date} // original publish date.
       dateModified={data.singlePost.frontmatter.dateModified}
       tags={data.singlePost.frontmatter.tags}
-      categories={data.singlePost.frontmatter.categories}
       image={data.singlePost.frontmatter.hero_image.publicURL}
+      categories={data.singlePost.frontmatter.categories}
       headline={data.singlePost.frontmatter.title}
       articleBody={data.singlePost.body}
-      // crumbs={crumbs}
-      // crumbLabel={customCrumbLabel}
     />
   );
 };
