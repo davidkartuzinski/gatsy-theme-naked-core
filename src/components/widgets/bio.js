@@ -19,9 +19,8 @@ const Bio = () => {
       <figure>
         <GatsbyImage
           image={data.bioImage.childImageSharp.gatsbyImageData}
-          alt='Author photo - David Kartuzinski.'
+          alt={author}
         />
-        <figcaption>{author}</figcaption>
       </figure>
       <p>{authorIntro} </p>
       <h4>Contact</h4>

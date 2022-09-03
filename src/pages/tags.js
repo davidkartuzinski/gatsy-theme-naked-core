@@ -1,18 +1,12 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 import { TagsIcon } from '../components/core/icons.js';
-import Seo from '../components/core/Seo';
+import Seo from '../components/core/seo';
 import Layout from '../components/structure/layout';
 import { useAllMdx } from '../hooks/use-all-mdx';
 import NakedBreadcrumb from '../components/core/breadcrumb';
 import Aside from '../components/structure/aside';
-
-function toKebabCase(str) {
-  return str
-    .toLowerCase()
-    .replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => '-' + chr)
-    .trim();
-}
+import { toKebabCase } from '../utilities/helpers.js';
 
 const TagsPage = ({ pageContext }) => {
   const { tags } = useAllMdx();

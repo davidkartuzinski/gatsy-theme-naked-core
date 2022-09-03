@@ -3,7 +3,7 @@ import Layout from '../components/structure/layout';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import Aside from '../components/structure/aside';
-import Seo from '../components/core/Seo';
+import Seo from '../components/core/seo';
 
 const NotFoundPage = () => {
   const data = useStaticQuery(query);

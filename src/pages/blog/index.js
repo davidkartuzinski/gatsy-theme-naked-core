@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Layout from '../../components/structure/layout';
 import Aside from '../../components/structure/aside';
-import Seo from '../../components/core/Seo';
+import Seo from '../../components/core/seo';
 import { graphql } from 'gatsby';
 import PostPreview from '../../components/core/post-preview';
 import NakedBreadcrumb from '../../components/core/breadcrumb';
@@ -32,12 +32,10 @@ const BlogRollPage = ({ data, pageContext }) => {
                       node.frontmatter.hero_image.childImageSharp
                         .gatsbyImageData
                     }
-                    ImageAlt={node.frontmatter.hero_image_alt}
-                    figCaption={node.frontmatter.hero_image_figcaption}
+                    imageAlt={node.frontmatter.hero_image_alt}
                     title={node.frontmatter.title}
                     date={node.frontmatter.date}
                     excerpt={node.frontmatter.description}
-                    imageClassName={node.frontmatter.hero_image_class}
                   />
                 </article>
               );
@@ -69,24 +67,21 @@ export const query = graphql`
   query blogPosts {
     blogPosts: allMdx(sort: { fields: frontmatter___date, order: DESC }) {
       nodes {
+        excerpt(pruneLength: 250)
         frontmatter {
-          tags
-          hero_image_alt
-          hero_image_class
-          hero_image_figcaption
-          hero_image_class
-          slug
-          title
+          author
+          categories
+          date(formatString: "MMMM D, YYYY")
           hero_image {
             childImageSharp {
               gatsbyImageData
             }
           }
-          author
-          categories
-          date(formatString: "MMMM D, YYYY")
+          hero_image_alt
+          slug
+          tags
+          title
         }
-        excerpt(pruneLength: 250)
         id
       }
     }

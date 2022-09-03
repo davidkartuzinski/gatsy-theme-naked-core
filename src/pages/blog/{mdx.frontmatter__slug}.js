@@ -4,7 +4,7 @@ import { getImage } from 'gatsby-plugin-image';
 import Layout from '../../components/structure/layout';
 import Aside from '../../components/structure/aside';
 import { AuthorIcon, PublishDateIcon } from '../../components/core/icons';
-import Seo from '../../components/core/Seo';
+import Seo from '../../components/core/seo';
 import ResponsiveImage from '../../components/core/responsive-image';
 import TextWidget from '../../components/widgets/text-widget';
 import { MDXProvider } from '@mdx-js/react';
@@ -65,8 +65,6 @@ const BlogPost = ({ data, children, pageContext }) => {
             <ResponsiveImage
               image={heroImage}
               alt={data.singlePost.frontmatter.hero_image_alt}
-              figcaption={data.singlePost.frontmatter.hero_image_figcaption}
-              imageClassName={data.singlePost.frontmatter.hero_image_class}
             />
 
             <p>
@@ -109,8 +107,6 @@ export const query = graphql`
         tags
         categories
         hero_image_alt
-        hero_image_class
-        hero_image_figcaption
         hero_image {
           childImageSharp {
             gatsbyImageData

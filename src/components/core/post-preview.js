@@ -4,30 +4,15 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { ReadNextIcon, PublishDateIcon } from './icons';
 
-const PostPreview = ({
-  slug,
-  image,
-  imageAlt,
-  title,
-  date,
-  figCaption,
-  excerpt,
-  imageClassName,
-}) => (
+const PostPreview = ({ slug, image, imageAlt, title, date, excerpt }) => (
   <>
     <Link to={`/blog/${slug}`}>
       <h2>{title}</h2>
     </Link>
     <figure>
       <Link to={`/blog/${slug}`}>
-        <GatsbyImage
-          image={image}
-          alt={imageAlt}
-          figCaption={figCaption}
-          imageClassName={imageClassName}
-        />
+        <GatsbyImage image={image} alt={imageAlt} />
       </Link>
-      <figcaption>{figCaption}</figcaption>
     </figure>
     <PublishDateIcon /> Published on <p>{date}</p>
     <p>{excerpt}</p>
