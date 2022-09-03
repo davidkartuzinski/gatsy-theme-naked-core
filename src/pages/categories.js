@@ -1,10 +1,21 @@
 import * as React from 'react';
-import Layout from '../components/structure/layout';
-import Aside from '../components/structure/aside';
+import { Link } from 'gatsby';
+import { CategoriesIcon } from '../components/core/icons.js';
 import Seo from '../components/core/Seo';
+import Layout from '../components/structure/layout';
+import { useAllMdx } from '../hooks/use-all-mdx';
 import NakedBreadcrumb from '../components/core/breadcrumb';
+import Aside from '../components/structure/aside';
+
+function toKebabCase(str) {
+  return str
+    .toLowerCase()
+    .replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => '-' + chr)
+    .trim();
+}
 
 const CategoriesPage = ({ pageContext }) => {
+  const { categories } = useAllMdx();
   const {
     breadcrumb: { crumbs },
   } = pageContext;
@@ -18,13 +29,19 @@ const CategoriesPage = ({ pageContext }) => {
         <NakedBreadcrumb crumbs={crumbs} crumbLabel={customCrumbLabel} />
         <article>
           <header>
-            <h1>Categories</h1>
+            <h1>
+              <CategoriesIcon />
+              Categories
+            </h1>
           </header>
           <ul>
-            <li>Category</li>
-            <li>Category</li>
-            <li>Category</li>
-            <li>Category</li>
+            {categories.map((category) => (
+              <li key={category.fieldValue}>
+                <Link to={`/categories/${toKebabCase(category.fieldValue)}`}>
+                  {category.fieldValue} ({category.totalCount})
+                </Link>
+              </li>
+            ))}
           </ul>
         </article>
       </main>
