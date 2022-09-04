@@ -198,5 +198,12 @@ module.exports = {
           'https://kaidawei.us3.list-manage.com/subscribe/post?u=b96fce7934d3d67838002705e&amp;id=87c55442ce', // add your MailChimp list endpoint here; see instructions below
       },
     },
+    {
+      resolve: `gatsby-source-instagram-all`,
+      options: {
+        access_token:
+          'IGQVJVTlo4SUNHQi11MU1lbXpNaHhNRnhLUmpuWHZAKSE1uRm41eUxmMDJLQ01TM1hqbmhhNm53WGFraTN6cm91RDVwajFnZAXJNSGxIejB3S291UVhvcmdaOW5RTnBxYnJRS1VGaGJOZAkFmSUZA2Y2JEXwZDZD',
+      },
+    },
   ],
 };
