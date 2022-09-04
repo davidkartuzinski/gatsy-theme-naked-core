@@ -208,5 +208,12 @@ module.exports = {
         access_token: process.env.INSTAGRAM_API_KEY,
       },
     },
+    // Needed legacy mode on: Solition #1 from https://fluentprogramming.com/unable-to-resolve-dependency-tree-error-when-installing-npm-packages/
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `./src/utils/typography`,
+      },
+    },
   ],
 };
