@@ -6,7 +6,7 @@ import Layout from '../components/structure/layout';
 import { useAllMdx } from '../hooks/use-all-mdx';
 import NakedBreadcrumb from '../components/core/breadcrumb';
 import Aside from '../components/structure/aside';
-import { toKebabCase } from '../../utilities/helpers';
+import { toKebabCase } from '../utils/helpers';
 
 const CategoriesPage = ({ pageContext }) => {
   const { categories } = useAllMdx();
