@@ -3,9 +3,9 @@ import * as React from 'react';
 import Header from './header';
 import Footer from './footer';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, pageClass }) => {
   return (
-    <div>
+    <div class={`wrapper ${pageClass}`}>
       <Header />
       {children}
       <Footer />
