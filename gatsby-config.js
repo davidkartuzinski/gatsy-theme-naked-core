@@ -1,7 +1,3 @@
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`,
-}); // Used to access variable e.g. FormSpree.io
-
 module.exports = {
   siteMetadata: {
     websiteName: `Gatsby Theme "Naked" core`,
@@ -195,5 +191,12 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
+    {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+        endpoint:
+          'https://kaidawei.us3.list-manage.com/subscribe/post?u=b96fce7934d3d67838002705e&amp;id=87c55442ce', // add your MailChimp list endpoint here; see instructions below
+      },
+    },
   ],
 };
