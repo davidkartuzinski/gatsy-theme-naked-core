@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     websiteName: `Gatsby Theme "Naked" core`,
@@ -201,8 +205,7 @@ module.exports = {
     {
       resolve: `gatsby-source-instagram-all`,
       options: {
-        access_token:
-          'IGQVJVTlo4SUNHQi11MU1lbXpNaHhNRnhLUmpuWHZAKSE1uRm41eUxmMDJLQ01TM1hqbmhhNm53WGFraTN6cm91RDVwajFnZAXJNSGxIejB3S291UVhvcmdaOW5RTnBxYnJRS1VGaGJOZAkFmSUZA2Y2JEXwZDZD',
+        access_token: process.env.INSTAGRAM_API_KEY,
       },
     },
   ],
