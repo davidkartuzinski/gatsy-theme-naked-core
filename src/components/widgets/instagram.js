@@ -34,7 +34,7 @@ export default function Instagram() {
                 <a
                   href={photo.link}
                   target='_blank'
-                  rel='noopener'
+                  rel='noreferrer'
                   tabIndex='0'
                 >
                   <GatsbyImage
