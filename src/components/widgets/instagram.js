@@ -30,7 +30,6 @@ export default function Instagram() {
           <ul>
             {data.allInstagramContent.nodes.map((photo, index) => (
               <li key={index}>
-                <h4>{photo.images}</h4>
                 <a
                   href={photo.link}
                   target='_blank'
