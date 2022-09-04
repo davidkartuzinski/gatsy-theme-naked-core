@@ -1,6 +1,9 @@
 import * as React from 'react';
-import Bio from '../widgets/bio';
+
 import MailChimpSignUp from '../widgets/mailchimp-sign-up';
+import LatestPosts from '../widgets/latest-posts';
+
+import Bio from '../widgets/bio';
 
 const Aside = ({ children }) => {
   return (
@@ -10,6 +13,8 @@ const Aside = ({ children }) => {
 
         <MailChimpSignUp />
         <Bio />
+
+        <LatestPosts />
       </aside>
     </>
   );

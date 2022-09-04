@@ -1,5 +1,6 @@
 import * as React from 'react';
 import SocialFollowMe from '../widgets/social-follow-me';
+import TextWidget2 from '../widgets/text-widget-2';
 import IconLogo from '../core/icon-logo';
 
 const Footer = () => {
@@ -12,7 +13,9 @@ const Footer = () => {
           <h2 className='h3'>Follow Gatsby Theme Naked</h2>
           <SocialFollowMe />
         </div>
-        <div>TEXT WIDGET GOES HERE ***</div>
+        <div>
+          <TextWidget2 />
+        </div>
       </section>
 
       <section className='privacy'>
