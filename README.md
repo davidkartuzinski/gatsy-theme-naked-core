@@ -1,6 +1,8 @@
 # A Naked Gatsby Theme (Updated 2022 for Gatsby v4)
 
-<small>**Note: The previous version of this theme contained two features I did not bring over. I removed the Comments plugin (as these just get spam nowadays), and I could not get Search to function. I left the search.js component and the CSS if you want to add search. Just import it into the header.** You can see the full implementation in the previous archive: [deprecated archive](davidkartuzinski/gatsby-theme-naked-core-deprecated: This theme is called Naked because I didn't tie you to any one type of CSS implementation. At this point you just need to add CSS and you're good to go. (github.com))</small>
+<small>**Note: The previous version of this theme contained two features I did not bring over. I removed the Comments plugin (as these just get spam nowadays), and I could not get Search to function. I left the search.js component and the CSS if you want to add search. Just import it into the header.** You can see the full implementation in the previous archive: [deprecated archive](davidkartuzinski/gatsby-theme-naked-core-deprecated) 
+  
+This theme is called Naked because I didn't tie you to any one type of CSS implementation. At this point you just need to add CSS and you're good to go. </small>
 
 ## A truly production ready base Gatsby Theme
 
