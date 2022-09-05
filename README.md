@@ -1,54 +1,51 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# A Naked Gatsby Theme (Updated 2022 for Gatsby v4)
 
-## 🚀 Quick start
+<small>**Note: The previous version of this theme contained two features I did not bring over. I removed the Comments plugin (as these just get spam nowadays), and I could not get Search to function. I left the search.js component and the CSS if you want to add search. Just import it into the header.**</small>
 
-1.  **Create a Gatsby site.**
+## A truly production ready base Gatsby Theme
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+This theme is called Naked because I didn't tie you to any one type of CSS implementation. At this point you just need to add CSS and you're good to go. **You can see the demo:** [Gatsby Naked Theme](https://gatsythemenakedcore.gtsb.io/)
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+Basically styles can be added to in the [global.css](https://github.com/davidkartuzinski/gatsy-theme-naked-core-2022/tree/main/src/styles) file. I could have made CSS Modules for each of the Widgets and components that are Optional, but I kept them in the `global.css`. In this way, you can remove less if you want to implement `styled-components`, as an example.
 
-2.  **Start developing.**
+## Developer friendly and full blog features, including:
 
-    Navigate into your new site’s directory and start it up.
+- You can easily change the theme color scheme in the `global.css` file. Just change the colors.
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+```
+/**** CSS Custom Variable for Color Scheme ****/
 
-3.  **Open the code and start customizing!**
+:root {
+  --accent-color: #d77e00;
+  --accent-color-shade: #8e4200;
+  --dark-accent-color: #55433b;
+  --grey-color: #dfe0df;
+  --white-color: #fff7f0;
+  --black-color: #040404;
+  --success-green: #007c45;
+  --error-red: #c4515c;
+  --edges-width: calc((100% - 1280px) / 2);
+}
 
-    Your site is now running at http://localhost:8000!
+```
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+- **Widgets**:
+  - Text Widgets
+  - Bio
+  - Latest Posts
+  - Social Follow Me
+- **Typography implementation.** **Note:** `npm install --save --legacy-peer-deps` **and** `npm config set legacy-peer-deps` **were both invoked to be able to install [gatsby-plugin-typography](https://www.gatsbyjs.com/plugins/gatsby-plugin-typography/?=typogr#gatsby-plugin-typography)**
+- **Tags for posts**, just add to the Frontmatter.
+- **Categories for posts**, just add to the Frontmatter.
+- **Blogroll** can be customized to show as many pages on it before creating additional pages for the blogroll.
+- **Sitewide Breadcrumbs**
+- **Instagram integration**. Just follow the instructions for getting your access token. [Video to watch](https://www.gatsbyjs.com/plugins/gatsby-source-instagram-all/?=gatsby-source-instagram-all). You **MUST** use `.env` variables or else Facebook will revoke the acces as soon as you commit and push to GitHub.
+- **MailChimp plugin configured**. You just need to replace the ID from [Mailchimp.com](https://mailchimp.com/)
+- **Comprehensive SEO implementation**. Special emphasis has been made to have a proper implementation of Schema.org and SEO best practices. For example, each different blog post, has it's own blog post schema.
+- **Simple Contact Form**
 
-4.  **Learn more**
+## Using the theme is easy
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+1. Just clone or download it.
+2. If you have any questions, feel free to ask.
+3. Feel free to make pull requests.
